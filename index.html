@@ -4,11 +4,1707 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>沖繩親子旅行行程規劃書 (2025/6/11-6/16) - v3.0 詳細優化版</title>
-    <!-- ... 原始的 CSS 和其他 head 內容 ... -->
+    <style>
+        :root {
+            --primary-color: #0056b3; /* 深藍 */
+            --secondary-color: #007bff; /* 亮藍 */
+            --accent-color: #f0ad4e; /* 黃色 */
+            --danger-color: #d9534f; /* 紅色 */
+            --success-color: #28a745; /* 綠色 */
+            --info-color: #17a2b8; /* 青藍色 */
+            --bg-light: #f8f9fa; /* 非常淡的灰藍 */
+            --bg-alt: #e9ecef; /* 淺灰 */
+            --section-bg: #ffffff; /* 白色內容區塊 */
+            --summary-bg: #fffadf; /* 淡黃摘要 */
+            --summary-border: #f0ad4e;
+            --details-bg: #fdfdff; /* 項目背景 - 更白 */
+            --details-border: #e0e0e0;
+            --text-color: #343a40; /* 深灰文字 */
+            --text-muted: #6c757d; /* 次要文字 */
+            --border-color: #dee2e6; /* 邊框灰 */
+            --link-color: #0069d9;
+            --link-hover-color: #004fa3;
+            --highlight-bg: #fff3cd; /* 高亮背景 */
+            --highlight-text: #856404; /* 高亮文字 */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            font-size: 16px; /* Base font size */
+            -webkit-text-size-adjust: 100%; /* Prevent font scaling on iOS */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto; /* Reduced top/bottom margin */
+            background: var(--section-bg);
+            padding: 20px 30px; /* Adjusted padding */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-top: 1.8em;
+            margin-bottom: 1em;
+            font-weight: 600;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            font-size: 2em; /* Slightly reduced */
+            margin-bottom: 1.2em;
+        }
+
+        h2 {
+            background-color: #e7f3ff;
+            padding: 12px 20px;
+            border-left: 6px solid var(--primary-color);
+            margin-top: 35px;
+            font-size: 1.6em; /* Slightly reduced */
+            border-radius: 4px;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.3em; /* Slightly reduced */
+            margin-top: 25px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        h4 {
+             color: var(--info-color);
+             font-size: 1.1em; /* Slightly reduced */
+             margin-top: 20px;
+             margin-bottom: 8px;
+             font-weight: 600;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px; /* Increased spacing */
+            padding-left: 1.5em; /* Increased indent */
+            position: relative;
+        }
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1em;
+            top: 0.1em;
+        }
+
+        strong { /* General strong */
+            font-weight: 600;
+             /* color: var(--text-color); Don't force color */
+        }
+        .highlight {
+             background-color: var(--highlight-bg);
+             padding: 2px 6px;
+             border-radius: 4px;
+             font-weight: 500;
+             color: var(--highlight-text);
+             border: 1px solid #ffeeba;
+        }
+        .alert-text { /* Specific class for danger text */
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+        .success-text { /* Specific class for success text */
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease, background-color 0.2s ease;
+            padding: 1px 3px;
+            margin: 0 1px;
+             border-radius: 3px;
+        }
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: none; /* No underline on hover for cleaner look */
+            background-color: #e2e6ea;
+        }
+        a.map-link, a.route-link, a.info-link, a.photo-info-link {
+            display: inline-block; /* Ensure icons and text align well */
+            margin-bottom: 3px; /* Spacing between links if they wrap */
+        }
+
+        /* Icon System */
+        .icon::before {
+            margin-right: 7px; /* Slightly increased spacing */
+            font-size: 1.1em;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+        }
+        .map-link::before { content: '📍 '; }
+        .route-link::before { content: '🗺️ '; }
+        .info-link::before { content: 'ℹ️ '; }
+        .car-icon::before { content: '🚗 '; }
+        .walk-icon::before { content: '🚶 '; }
+        .train-icon::before { content: '🚆 '; }
+        .taxi-icon::before { content: '🚕 '; }
+        .food-icon::before { content: '🍜 '; }
+        .shop-icon::before { content: '🛍️ '; }
+        .note-icon::before { content: '📝 '; }
+        .time-icon::before { content: '🕒 '; }
+        .hotel-icon::before { content: '🏨 '; }
+        .flight-icon::before { content: '✈️ '; }
+        .photo-info-link::before { content: '🖼️ '; }
+        .alert-icon::before { content: '⚠️ '; color: var(--danger-color); }
+        .pin-icon::before { content: '📌 '; }
+        .check-icon::before { content: '✅ '; color: var(--success-color);}
+        .pack-icon::before { content: '🎒 '; }
+        .money-icon::before { content: '💴 '; }
+        .phone-icon::before { content: '📞 '; }
+        .web-icon::before { content: '🌐 '; }
+
+        .photo-info-link {
+            font-size: 0.9em;
+            margin-left: 5px; /* Reduced margin */
+            color: #555;
+            background-color: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+        .photo-info-link:hover {
+            background-color: #e0e0e0;
+            border-color: #ccc;
+        }
+
+        /* Summary Section */
+        .summary {
+            background-color: var(--summary-bg);
+            padding: 20px 25px;
+            border: 1px solid var(--summary-border);
+            border-left: 5px solid var(--summary-border);
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .summary p {
+            margin: 0.7em 0; /* Increased spacing */
+        }
+        .summary strong {
+             color: var(--primary-color);
+        }
+        .summary ul { padding-left: 25px; margin-top: 5px; }
+        .summary li::before { content: ''; } /* Hide bullet */
+        .summary li { padding-left: 0; margin-bottom: 5px; } /* Adjust list item style */
+
+        /* Itinerary Items - Using <details> */
+        .itinerary-item {
+            background: var(--details-bg);
+            margin-bottom: 18px; /* Increased spacing */
+            border: 1px solid var(--details-border);
+            border-radius: 8px; /* Smoother radius */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s ease;
+        }
+        .itinerary-item:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .itinerary-item summary {
+            padding: 15px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+            color: var(--text-color);
+            background-color: #f1f3f5;
+            border-radius: 8px 8px 0 0;
+            transition: background-color 0.2s ease;
+        }
+         .itinerary-item summary:hover {
+            background-color: #e9ecef;
+        }
+        .itinerary-item summary::-webkit-details-marker { display: none; }
+        .itinerary-item summary::before { /* Custom indicator */
+            content: '+';
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-color);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease;
+        }
+        .itinerary-item[open] summary::before {
+            content: '−';
+        }
+        .itinerary-item[open] summary {
+            border-bottom: 1px solid var(--details-border);
+            border-radius: 8px 8px 0 0; /* Keep radius when open */
+        }
+        .itinerary-details {
+            padding: 18px 25px; /* Increased padding */
+            border-top: none; /* Remove top border as summary has bottom */
+            background-color: #ffffff;
+            border-radius: 0 0 8px 8px;
+        }
+        .itinerary-details p, .itinerary-details ul, .itinerary-details div {
+            margin-bottom: 10px; /* Spacing within details */
+        }
+        .itinerary-details > *:last-child {
+            margin-bottom: 0; /* Remove margin from last element */
+        }
+
+        .small-note {
+            font-size: 0.9em;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+        .alert-note { /* Used within details for warnings */
+            color: var(--danger-color);
+            font-weight: bold;
+            display: block;
+            margin-top: 8px;
+            background-color: #f8d7da;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #f5c6cb;
+        }
+        .info-note { /* Used within details for info */
+            color: var(--primary-color);
+            display: block;
+            margin-top: 8px;
+            background-color: #e7f3ff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #b8daff;
+        }
+
+
+        /* Table of Contents */
+        .toc {
+            background-color: var(--bg-alt);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        .toc h3 {
+            margin-top: 0;
+            margin-bottom: 15px; /* Increased spacing */
+            color: var(--primary-color);
+            border-bottom: none;
+            font-size: 1.2em; /* Adjusted size */
+            text-align: center;
+        }
+        .toc ul {
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adjusted gap */
+            justify-content: center;
+        }
+        .toc li {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0; /* Remove bottom margin for flex layout */
+        }
+        .toc li::before { content: none; }
+        .toc a {
+            text-decoration: none;
+            color: var(--link-color);
+            padding: 6px 12px; /* Adjusted padding */
+            border-radius: 20px; /* Pill shape */
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+        .toc a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        /* Tooltip (using title attribute - simple built-in) */
+        [title] {
+            cursor: help;
+            text-decoration: none; /* Remove dotted underline */
+            border-bottom: 1px dotted var(--text-muted); /* Use border instead */
+        }
+
+        /* Footer */
+        .page-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-muted);
+        }
+         .footer-icons span {
+             margin: 0 10px;
+             font-size: 1.6em; /* Slightly larger */
+         }
+
+        /* Photo Gallery Styles */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust minmax */
+            gap: 10px; /* Reduced gap */
+            margin: 15px 0; /* Adjusted margin */
+        }
+        .photo-item {
+            position: relative;
+            border-radius: 6px; /* Adjusted radius */
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .photo-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .photo-item img {
+            width: 100%;
+            height: 160px; /* Adjusted height */
+            object-fit: cover;
+            display: block;
+        }
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px; /* Adjusted padding */
+            font-size: 0.85em; /* Adjusted size */
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .photo-item:hover .photo-caption {
+             opacity: 1;
+        }
+        .section-photos {
+            margin: 25px 0; /* Adjusted margin */
+            padding: 15px; /* Adjusted padding */
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+        .section-photos h3 { /* Heading within photo section */
+            color: var(--secondary-color);
+            margin-top: 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--secondary-color);
+            font-size: 1.15em;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-0 { margin-bottom: 0 !important; }
+        .mt-0 { margin-top: 0 !important; }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body { font-size: 15px; /* Slightly smaller base font for mobile */ }
+            .container {
+                padding: 15px 15px; /* Reduced padding */
+                margin: 10px; /* Reduced margin */
+            }
+            h1 { font-size: 1.7em; margin-bottom: 1em; }
+            h2 { font-size: 1.4em; padding: 10px 15px; margin-top: 30px;}
+            h3 { font-size: 1.15em; margin-top: 20px; }
+            h4 { font-size: 1.05em; margin-top: 15px; }
+            .toc ul { gap: 8px; } /* Reduced gap */
+            .toc a { padding: 5px 10px; font-size: 0.85em; }
+            .itinerary-item summary { padding: 12px 15px; font-size: 0.95em; }
+            .itinerary-item summary::before { right: 15px; font-size: 1.2em;}
+            .itinerary-details { padding: 15px 18px; } /* Adjust padding */
+             .photo-gallery { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } /* Smaller images on mobile */
+             .photo-item img { height: 120px; }
+             .summary p { font-size: 0.95em; }
+             .summary ul { padding-left: 20px; }
+             li { padding-left: 1.3em; } /* Adjust list indent */
+        }
+
+        @media (max-width: 480px) {
+             h1 { font-size: 1.5em; }
+             h2 { font-size: 1.25em; }
+             h3 { font-size: 1.1em; }
+             .toc ul { justify-content: flex-start; } /* Align TOC items left */
+             .footer-icons span { font-size: 1.4em; margin: 0 8px;}
+        }
+
+        /* Print optimization */
+        @media print {
+            body {
+                font-size: 10pt;
+                background-color: #fff;
+                color: #000;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+                border-radius: 0;
+            }
+            h1, h2, h3, h4 {
+                color: #000;
+                background-color: transparent !important;
+                border: none !important;
+                padding: 5px 0 !important;
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+            }
+            h1 { font-size: 16pt; text-align: left; }
+            h2 { font-size: 14pt; border-bottom: 1px solid #ccc !important; }
+            h3 { font-size: 12pt; }
+            a { color: #000; text-decoration: none; }
+            a::after { content: " [" attr(href) "]"; font-size: 8pt; color: #555; } /* Show URLs */
+            a[href^="https://www.google.com/maps/dir/"]::after { content: " [路線]"; } /* Simplify route links */
+            a[href^="https://www.google.com/maps/search/"]::after { content: " [地圖]"; } /* Simplify map links */
+            a.info-link::after, a.photo-info-link::after { content: " [資訊]"; } /* Simplify info links */
+
+            .toc, .summary, .page-footer, .photo-gallery, .photo-caption, .itinerary-item summary::before {
+                display: none; /* Hide non-essential elements */
+            }
+            details {
+                page-break-inside: avoid; /* Try to keep details content together */
+                border: none !important;
+                box-shadow: none !important;
+                margin-bottom: 10px;
+            }
+            details[open] summary {
+                 display: none; /* Hide summary when open */
+            }
+            details .itinerary-details {
+                display: block !important; /* Ensure details content is shown */
+                padding: 5px 0;
+                border: none !important;
+                background-color: #fff !important;
+            }
+            .itinerary-item {
+                 border: none; box-shadow: none; margin-bottom: 10px; background: none;
+            }
+            .highlight { background-color: #eee; padding: 1px 3px; border: none; color: #000; }
+            .alert-note, .info-note { border: 1px solid #ccc; padding: 5px; margin-top: 5px; background: #f9f9f9;}
+            .icon::before { content: ""; margin-right: 0; } /* Remove emoji icons */
+        }
+    </style>
+    <script>
+        // Ensure all details elements are open for printing
+        (function() {
+            var beforePrint = function() {
+                var details = document.querySelectorAll('details');
+                for (var i = 0; i < details.length; i++) {
+                    details[i].setAttribute('open', '');
+                }
+            };
+            var afterPrint = function() {
+                // Optionally close them again after printing if needed
+                // var details = document.querySelectorAll('details');
+                // for (var i = 0; i < details.length; i++) {
+                //     details[i].removeAttribute('open');
+                // }
+            };
+
+            if (window.matchMedia) {
+                var mediaQueryList = window.matchMedia('print');
+                mediaQueryList.addListener(function(mql) {
+                    if (mql.matches) {
+                        beforePrint();
+                    } else {
+                        // afterPrint(); // Enable if you want to close after print preview closes
+                    }
+                });
+            }
+
+            window.onbeforeprint = beforePrint;
+            window.onafterprint = afterPrint; // Doesn't work in all browsers
+
+            // Also run on load in case it's opened directly in print mode
+             window.addEventListener('DOMContentLoaded', function() {
+                 if (window.matchMedia('print').matches) {
+                    beforePrint();
+                 }
+             });
+        }());
+    </script>
 </head>
 <body>
-<!-- ... 原始的 body 內容，但圖片路徑改為相對路徑 ... -->
-<img src="images/dmm_aquarium_jellyfish.jpg" alt="水族館光影區">
-<!-- ... 其餘內容 ... -->
+
+<div class="container">
+
+    <h1>沖繩親子旅行行程規劃書 <br><span style="font-size: 0.7em; color: var(--text-muted);">(2025/6/11-6/16) - v3.0 詳細優化版</span></h1>
+
+    <section class="summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading" style="background:none; border:none; padding:0; margin-top:0; font-size:1.5em;" class="text-center">行程總覽</h2>
+        <p><span class="time-icon icon"></span><strong>旅行時間：</strong> <span class="highlight">2025年6月11日（週三）至 6月16日（週一）</span> (共6天5夜)</p>
+        <p><span class="walk-icon icon"></span><strong>旅遊成員：</strong> 兩大（成人）兩小（<span class="highlight">5歲</span>）</p>
+        <p><span class="map-link icon"></span><strong>出發地：</strong> 新竹縣竹北市</p>
+        <p><span class="flight-icon icon"></span><strong>航班資訊：</strong>
+            <span title="中華航空">中華航空 (China Airlines)</span><br>
+            &nbsp;&nbsp;&nbsp;去程: <span class="highlight">CI120</span> | 08:00 <span title="桃園機場 T2">TPE</span> → 10:25 <span title="那霸機場">OKA</span> (當地時間)<br>
+            &nbsp;&nbsp;&nbsp;回程: <span class="highlight">CI123</span> | 21:05 <span title="那霸機場">OKA</span> → 21:50 <span title="桃園機場 T2">TPE</span> (台灣時間)
+        </p>
+         <p><span class="car-icon icon"></span><strong>租車資訊：</strong>
+            <span title="Okinawa Tourist Service">OTS租車</span><br>
+            &nbsp;&nbsp;&nbsp;取車: <span class="highlight">6/11 中午 @ 臨空豐崎營業所</span> <a href="https://www.google.com/maps/search/?api=1&query=OTSレンタカー+臨空豊崎営業所" target="_blank" class="map-link icon" title="OTS臨空豐崎營業所 地圖">[地圖]</a><br>
+            &nbsp;&nbsp;&nbsp;還車: <span class="highlight">6/14 傍晚 @ DFS T-Galleria 營業所</span> <a href="https://www.google.com/maps/search/?api=1&query=OTSレンタカー+DFS営業所+Tギャラリア沖縄" target="_blank" class="map-link icon" title="OTS DFS T-Galleria 營業所 地圖">[地圖]</a>
+        </p>
+         <p><span class="train-icon icon"></span><strong>其他交通：</strong> <span title="沖繩都市單軌電車">單軌電車 (Yui Rail)</span>, <span class="taxi-icon icon"></span>計程車, <span class="walk-icon icon"></span>步行</p>
+        <div><span class="hotel-icon icon"></span><strong>住宿安排：</strong>
+            <ul>
+                <li><strong>6/11-6/14 (3晚)：</strong> <span class="highlight">VESSEL HOTEL CAMPANA OKINAWA</span> (美國村)
+                    <a href="https://www.google.com/maps/search/?api=1&query=VESSEL+HOTEL+CAMPANA+OKINAWA" target="_blank" class="map-link icon" title="VESSEL HOTEL CAMPANA OKINAWA 地圖">[地圖]</a>
+                    <a href="https://www.vessel-hotel.jp/campana/okinawa/" target="_blank" class="info-link icon" title="查看 VESSEL HOTEL CAMPANA OKINAWA 官方網站">[飯店官網]</a>
+                </li>
+                <li><strong>6/14-6/16 (2晚)：</strong> <span class="highlight">那霸國際通海洋酒店 (Hotel Ocean)</span> (國際通牧志站旁)
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Ocean+Naha+Kokusai+Dori" target="_blank" class="map-link icon" title="Hotel Ocean 地圖">[地圖]</a>
+                    <a href="https://www.hotelocean.jp/" target="_blank" class="info-link icon" title="查看 Hotel Ocean 官方網站">[飯店官網]</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <nav class="toc" aria-label="行程目錄">
+        <h3>快速導覽</h3>
+        <ul>
+            <li><a href="#prep">行前準備</a></li>
+            <li><a href="#day1">Day 1 (6/11 Wed)</a></li>
+            <li><a href="#day2">Day 2 (6/12 Thu)</a></li>
+            <li><a href="#day3">Day 3 (6/13 Fri)</a></li>
+            <li><a href="#day4">Day 4 (6/14 Sat)</a></li>
+            <li><a href="#day5">Day 5 (6/15 Sun)</a></li>
+            <li><a href="#day6">Day 6 (6/16 Mon)</a></li>
+            <li><a href="#food">美食推薦</a></li>
+            <li><a href="#shopping">購物推薦</a></li>
+            <li><a href="#packing">打包清單</a></li>
+            <li><a href="#notes">注意事項</a></li>
+            <li><a href="#emergency">緊急資訊</a></li>
+        </ul>
+    </nav>
+
+    <section id="prep" aria-labelledby="prep-heading">
+        <h2 id="prep-heading"><span class="check-icon icon"></span>行前準備清單</h2>
+        <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;">
+            <li><span class="pin-icon icon"></span><strong>護照確認：</strong> 檢查所有成員護照效期 (需有6個月以上)。</li>
+            <li><span class="pin-icon icon"></span><strong>駕照與譯本：</strong> 駕駛者申請 <span class="highlight">駕照日文譯本</span> (監理站辦理)，出國時需攜帶 <span class="alert-text">正本駕照 + 譯本</span>。</li>
+            <li><span class="pin-icon icon"></span><strong>機票/住宿預訂：</strong> 確認所有預訂紀錄、列印或存檔。</li>
+            <li><span class="pin-icon icon"></span><strong>租車預訂：</strong> 完成 OTS 租車預訂，含兒童安全座椅、ETC卡租借 (若需要)。</li>
+            <li><span class="pin-icon icon"></span><strong>活動預約：</strong> 預約餐廳 (燒肉King/大家Ufuya)、SUP體驗 (若參加)。</li>
+            <li><span class="pin-icon icon"></span><strong>外幣兌換：</strong> 兌換日圓現金 (建議準備部分小面額)。</li>
+            <li><span class="pin-icon icon"></span><strong>信用卡：</strong> 確認海外刷卡功能、手續費，準備備用卡。</li>
+            <li><span class="pin-icon icon"></span><strong>網路準備：</strong> 租借 WiFi 分享器 / 購買 SIM 卡 / 開通手機漫遊。</li>
+            <li><span class="pin-icon icon"></span><strong>旅遊保險：</strong> 投保旅遊平安險、不便險、醫療險。</li>
+            <li><span class="pin-icon icon"></span><strong>行李打包：</strong> 參考下方 <a href="#packing">打包清單</a>。</li>
+            <li><span class="pin-icon icon"></span><strong>行程確認：</strong> 最後檢視行程，下載離線地圖 (Google Maps)。</li>
+            <li><span class="pin-icon icon"></span><strong>機場交通：</strong> 預約機場接送或確認自行開車停車事宜。</li>
+        </ul>
+    </section>
+
+    <section id="day1" aria-labelledby="day1-heading">
+        <h2 id="day1-heading">Day 1: 6月11日（週三）<span class="flight-icon icon"></span>啟程 → <span class="car-icon icon"></span>租車 → <span class="hotel-icon icon"></span>美國村初體驗</h2>
+        <div class="itinerary-item">
+            <details open> <!-- Default open first day -->
+                <summary><span class="time-icon icon"></span><strong><span class="alert-text">04:00-05:00：</span></strong> <span class="car-icon icon"></span>竹北出發 → 桃園機場T2</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>交通：自行開車或預約機場接送。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hsinchu+County,+Zhubei+City/Taoyuan+International+Airport+Terminal+2/" target="_blank" title="Google Maps 路線規劃">[開車路線參考]</a></span> (車程約 45-60 分鐘)</p>
+                    <div class="alert-note alert-icon icon">
+                        <strong>**極早出發提醒**</strong><br>
+                        為趕上 <span class="highlight">08:00 CI120</span> 航班，並預留充足報到/托運/安檢時間 (國際線建議 <span class="highlight">3小時前</span> 抵達)，務必準時甚至提早出發！確認駕駛精神狀況良好。
+                    </div>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>05:00-07:30：</strong> <span class="flight-icon icon"></span>桃園機場報到 & 出境</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>地點：桃園機場第二航廈 中華航空櫃檯。</p>
+                    <p><span class="check-icon icon"></span>流程：辦理登機手續、托運行李、安全檢查、證照查驗。</p>
+                    <p class="small-note">可利用自動通關 (e-Gate) 加快速度。機場內可簡單用餐或逛逛免稅店。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+             <details>
+                <summary><span class="time-icon icon"></span><strong>08:00-10:25 (當地時間)：</strong> <span class="flight-icon icon"></span>搭乘華航 CI120 前往沖繩</summary>
+                <div class="itinerary-details">
+                     <p><span class="info-icon icon"></span>目的地：沖繩那霸機場 (<span title="Naha Airport Code">OKA</span>)。</p>
+                     <p class="small-note">飛行時間約 1小時25分鐘。沖繩比台灣 <span class="highlight">快 1 小時</span> (GMT+9)。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>10:30-11:15：</strong> <span class="flight-icon icon"></span>抵達那霸 & 入境手續</summary>
+                <div class="itinerary-details">
+                    <p><span class="check-icon icon"></span>流程：跟隨指示前往入境審查 (外國人通道)、按指紋拍照、領取托運行李、海關申報 (通常無申報物品可走綠線通道)。</p>
+                    <p class="small-note">可先填寫好入境卡和海關申報單 (機上會發放，或線上 Visit Japan Web 填寫)。</p>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>11:15-12:00：</strong> <span class="car-icon icon"></span>OTS 租車 (臨空豐崎營業所)</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>流程：</p>
+                    <ol>
+                        <li>出國際線入境大廳後，尋找 <span class="highlight">OTS 租車的接待櫃檯/指示牌</span> (通常在出口附近或需到指定集合點)。</li>
+                        <li>出示預約證明，工作人員會引導搭乘 <span class="highlight">免費接駁巴士</span> 前往臨空豐崎營業所 (車程約 10-15 分鐘)。</li>
+                        <li>抵達營業所後，抽取號碼牌等待叫號辦理手續。</li>
+                    </ol>
+                    <p><span class="pin-icon icon"></span>需備文件：<span class="highlight">全員護照、駕駛者台灣駕照正本、駕照日文譯本、預約確認信、信用卡</span> (可能需過卡)。</p>
+                    <p><span class="info-icon icon"></span>取車檢查：仔細檢查車輛外觀是否有刮痕損傷 (拍照存證)、確認油量、兒童座椅安裝、操作方式 (雨刷/方向燈)、導航設定等。</p>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=OTSレンタカー+臨空豊崎営業所" target="_blank" class="map-link icon">[OTS臨空豐崎營業所 地圖]</a> <a href="https://www.otsinternational.jp/otsrentacar/cn/okinawa/office/toyosaki/" target="_blank" class="info-link icon">[營業所資訊]</a></p>
+                    <p class="small-note">尖峰時段取車可能需要較長時間，請耐心等候。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>12:15-13:15：</strong> <span class="food-icon icon"></span>午餐 (豐崎地區)</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>地點建議：<span class="highlight">iias 沖繩豐崎購物中心</span></p>
+                    <p><span class="car-icon icon"></span>交通：從 OTS 營業所開車前往非常近 (約 2-3 分鐘)。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/OTS+Rent+a+Car+Rinku+Toyosaki+Branch,+3+Chome-37+Toyosaki,+Tomigusuku,+Okinawa+901-0225,+Japan/iias+Okinawa+Toyosaki,+3+Chome-35+Toyosaki,+Tomigusuku,+Okinawa+901-0225,+Japan/" target="_blank">[OTS至iias路線]</a></span> | <a href="https://www.google.com/maps/search/?api=1&query=iias+沖縄豊崎" target="_blank" class="map-link icon">[iias 地圖]</a> <a href="https://toyosaki.iias.jp/" target="_blank" class="info-link icon">[官網]</a></p>
+                    <p class="small-note">iias 內有美食街及多家餐廳可選擇，用餐方便且有停車場。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>13:30-15:30：</strong> <span class="pin-icon icon"></span>參觀 <span class="highlight">DMM Kariyushi 水族館</span></summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"></span>地址：沖縄県豊見城市豊崎３−３５ (就在 iias 購物中心旁)</p>
+                    <p><span class="car-icon icon"></span>交通：從 iias 午餐地點 <span class="highlight">步行</span> 或開車極短距離。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/iias+Okinawa+Toyosaki/DMM+Kariyushi+Aquarium/" target="_blank">[iias至DMM水族館路線]</a></span> | <a href="https://kariyushi-aquarium.com/tc/" target="_blank" class="info-link icon">[景點官網/票價]</a></p>
+                    <p><span class="info-icon icon"></span>特色：新型態水族館，結合光影科技與海洋生物展示，室內場館舒適，有多種互動體驗區，適合親子同樂。</p>
+                    <p class="small-note">建議停留時間：約 1.5 - 2 小時。可事先於 Klook/KKday 或官網購票。</p>
+
+                    <div class="section-photos">
+                        <h3>DMM Kariyushi 水族館照片預覽</h3>
+                        <div class="photo-gallery">
+                             <div class="photo-item">
+                                <img src="image/dmm_aquarium_jellyfish.jpg" alt="水族館光影區">
+                                <div class="photo-caption">光影與水母</div>
+                            </div>
+                            <div class="photo-item">
+                                <img src="image/dmm_aquarium_tank.jpg" alt="大型魚缸">
+                                <div class="photo-caption">大型魚缸</div>
+                            </div>
+                             <div class="photo-item">
+                                <img src="image/dmm_aquarium_fish.jpg" alt="熱帶魚">
+                                <div class="photo-caption">色彩繽紛的魚</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>15:30-16:30：</strong> <span class="car-icon icon"></span>開車前往飯店 <span class="hotel-icon icon"></span>VESSEL HOTEL CAMPANA OKINAWA</summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=VESSEL+HOTEL+CAMPANA+OKINAWA" target="_blank">飯店地址：沖縄県北谷町美浜9番地22 (美國村內)</a></span></p>
+                    <p><span class="car-icon icon"></span>交通：從 DMM 水族館出發，車程約 <span class="highlight">40-60 分鐘</span>。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/DMM+Kariyushi+Aquarium/Vessel+Hotel+Campana+Okinawa/" target="_blank">[開車路線建議]</a></span></p>
+                    <p class="small-note">可選擇走<span title="沖縄自動車道">高速公路</span> (豐見城・名嘉地IC → 沖縄南IC，需支付過路費) 可避開部分市區路段，時間較穩定。下班時間國道 58 號可能塞車。</p>
+                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入飯店電話 <span class="highlight">098-936-1188</span> 或 Map Code <span class="highlight">33 525 201*66</span>。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>16:30 之後：</strong> <span class="hotel-icon icon"></span>飯店 Check-in & 房間休息</summary>
+                <div class="itinerary-details">
+                    <p><span class="check-icon icon"></span>辦理入住手續，領取房卡，將行李搬入房間。</p>
+                    <p><a href="https://www.vessel-hotel.jp/campana/okinawa/" target="_blank" class="info-link icon">[飯店官網/設施]</a></p>
+                    <p><span class="info-icon icon"></span>飯店特色：地理位置優越 (緊鄰美國村、日落海灘)，設有本館和別館，有展望浴場、室內外泳池 (季節開放)、豐富的兒童備品與早餐，非常<span class="highlight">親子友善</span>。</p>
+                    <p class="small-note">稍作休息，熟悉一下飯店環境。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>18:00-19:30：</strong> <span class="food-icon icon"></span>晚餐 (美國村內)</summary>
+                <div class="itinerary-details">
+                    <p><span class="walk-icon icon"></span>交通：從飯店<span class="highlight">步行</span>即可進入美國村區域。</p>
+                    <p><span class="info-icon icon"></span>晚餐選擇：美國村內餐廳選擇多樣，有美式、日式、沖繩料理等。</p>
+                    <ul>
+                        <li>推薦嘗試：<span class="highlight">グルメ回転寿司市場 (迴轉壽司市場) 美浜店</span> (人氣排隊店) <a href="https://www.google.com/maps/search/?api=1&query=グルメ回転寿司市場+美浜店" target="_blank" class="map-link icon">[地圖]</a></li>
+                        <li>或在 Depot Island 區域尋找喜歡的餐廳。</li>
+                    </ul>
+                    <p><span class="food-icon icon"></span>飯後甜點：<span class="highlight">Blue Seal 冰淇淋 (北谷店)</span> 品嚐沖繩特色口味。</p>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=Blue+Seal+Chatan" target="_blank" class="map-link icon">[Blue Seal 地圖]</a> <a href="https://www.blueseal.co.jp/" target="_blank" class="info-link icon">[官網]</a></p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>20:00：</strong> <span class="hotel-icon icon"></span>回飯店休息</summary>
+                <div class="itinerary-details">
+                     <p><span class="note-icon icon"></span>第一天凌晨出發加上搭機、取車、移動，行程較為緊湊疲累，建議早點回飯店休息，養足精神。</p>
+                     <p class="small-note">可以去飯店的展望浴場泡湯放鬆。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="day2" aria-labelledby="day2-heading">
+        <h2 id="day2-heading">Day 2: 6月12日（週四）<span class="pin-icon icon"></span>部瀨名海底探險 & <span class="walk-icon icon"></span>沙灘時光</h2>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>07:30-08:30：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>享受 Vessel Hotel 評價頗高的豐盛早餐，補充體力。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>08:30-09:30：</strong> <span class="car-icon icon"></span>開車前往 <span class="highlight">部瀨名海中公園 (Busena Marine Park)</span></summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=ブセナ海中公園" target="_blank">地址：沖縄県名護市字喜瀬1744-1</a></span> (注意: 在名護市喜瀬 Kise，非恩納村)</p>
+                    <p><span class="car-icon icon"></span>交通：從飯店出發，車程約 <span class="highlight">50-60 分鐘</span>。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/Busena+Marine+Park/" target="_blank">[開車路線建議]</a></span></p>
+                    <p class="small-note">建議走高速公路 (沖縄南IC → 許田IC)，時間較快且穩定。</p>
+                     <p><a href="https://www.busena-marinepark.com/chinese_t/index.html" target="_blank" class="info-link icon">[景點官網/票價]</a></p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="time-icon icon"></span><strong>09:40-11:30：</strong> <span class="pin-icon icon"></span>體驗部瀨名海中公園設施</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>抵達後先至售票處購買 <span class="highlight">玻璃底船 + 海中展望塔 套票</span> (較划算)。</p>
+                    <p>從停車場/售票處搭乘<span class="highlight">免費紅色接駁巴士</span>前往海灘及設施區域。</p>
+                    <ul>
+                        <li><strong><span class="pin-icon icon"></span>搭乘玻璃底船 (Glass Bottom Boat)：</strong>
+                            <br>航程約 20 分鐘，透過船底玻璃觀察珊瑚礁和熱帶魚。 <span class="small-note">整點 / 20分 / 40分 發船 (依現場公告為準)。</span></li>
+                        <li><strong><span class="pin-icon icon"></span>參觀海中展望塔 (Underwater Observatory)：</strong>
+                            <br>走下旋轉樓梯，深入水下 5 公尺，透過 360 度的窗戶觀賞真實的海底世界。</li>
+                    </ul>
+                    <p><span class="info-icon icon"></span>特色：不需游泳或潛水，即可輕鬆欣賞沖繩美麗的海底風光，非常適合帶長輩及幼童的家庭。</p>
+                    <p class="small-note">建議停留時間：約 1.5 - 2 小時。注意防曬。</p>
+
+                    <div class="section-photos">
+                        <h3>部瀨名海中公園照片預覽</h3>
+                        <div class="photo-gallery">
+                            <div class="photo-item">
+                                <img src="image/busena_glass_boat.jpg" alt="玻璃底船">
+                                <div class="photo-caption">玻璃底船</div>
+                            </div>
+                            <div class="photo-item">
+                                <img src="image/busena_tower_exterior.jpg" alt="海中展望塔外觀">
+                                <div class="photo-caption">海中展望塔</div>
+                            </div>
+                            <div class="photo-item">
+                                <img src="image/busena_tower_fish_view.jpg" alt="展望塔內部">
+                                <div class="photo-caption">從展望塔看魚</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>12:00-13:00：</strong> <span class="food-icon icon"></span>午餐 (部瀨名或恩納村附近)</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>午餐選擇：</p>
+                    <ul>
+                        <li><strong>部瀨名海灘度假村內餐廳：</strong> 較方便，但價位可能稍高。</li>
+                        <li><strong>開車前往恩納村方向 (約 10-15 分鐘車程)：</strong>
+                            <br> - <span class="highlight">なかむらそば (中村 Soba)：</span>人氣沖繩麵店。<a href="https://www.google.com/maps/search/?api=1&query=なかむらそば+恩納村" target="_blank" class="map-link icon">[地圖]</a>
+                            <br> - <span class="highlight">元祖海ぶどう 本店：</span>海葡萄蓋飯創始店。<a href="https://www.google.com/maps/search/?api=1&query=元祖海ぶどう+本店" target="_blank" class="map-link icon">[地圖]</a>
+                            <br> - 或沿國道 58 號線尋找其他海景餐廳或沖繩料理店。
+                            <span class="route-link icon"><a href="https://www.google.com/maps/dir/Busena+Marine+Park/Onna,+Kunigami+District,+Okinawa,+Japan/" target="_blank">[部瀨名至恩納村路線參考]</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>13:30-16:30：</strong> <span class="hotel-icon icon"></span>返回飯店稍作休息 或 <span class="walk-icon icon"></span><span class="highlight">北谷公園 日落海灘 (Sunset Beach)</span> 玩沙戲水</summary>
+                <div class="itinerary-details">
+                    <p><span class="car-icon icon"></span>交通：從午餐地點開車返回 Vessel Hotel (車程約 40-60 分鐘)。<span class="route-link icon"><a href="https://www.google.com/maps/dir/元祖海ぶどう+本店/Vessel+Hotel+Campana+Okinawa/" target="_blank">[範例:恩納村回飯店路線]</a></span></p>
+                    <p><span class="info-icon icon"></span>下午活動選擇：</p>
+                     <ul>
+                         <li><strong>回飯店休息：</strong> 如果上午活動較累，可以回房小睡片刻或使用飯店泳池。</li>
+                         <li><strong>日落海灘：</strong>
+                             <br><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=北谷公園+サンセットビーチ" target="_blank">[日落海灘地圖]</a></span> <a href="https://www.okinawastory.jp/spot/1300" target="_blank" class="info-link icon">[海灘資訊]</a>
+                             <br>海灘就在飯店旁邊，<span class="highlight">步行 2-3 分鐘</span>即可抵達。沙灘平緩，適合小朋友玩沙、踏浪。有洗手間和沖腳設施。
+                             <br><span class="pack-icon icon"></span>記得攜帶：泳衣、毛巾、換洗衣物、玩沙工具、防曬用品。
+                         </li>
+                     </ul>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>17:00-18:00：</strong> <span class="pin-icon icon"></span><span class="highlight">SUP 體驗 (選擇性活動)</span></summary>
+                <div class="itinerary-details">
+                    <div class="alert-note alert-icon icon">
+                        <strong>**注意事項**</strong><br>
+                        此為<span class="highlight">選擇性</span>活動，需<span class="highlight">提前預約</span>。<br>
+                        請務必考量當日天氣、海況、風浪以及大人小孩的體力再決定是否參加，<span class="alert-text">安全第一</span>！
+                        <br>若風浪不佳或感覺疲累，建議取消此行程。
+                    </div>
+                    <p><span class="info-icon icon"></span>地點選擇：</p>
+                    <ul>
+                        <li><strong>恩納村附近：</strong> 選擇較多，可能有較佳的海況 (如：真榮田岬附近，但青之洞窟人潮多)，但需額外開車往返 (單程約 40-50 分鐘)。</li>
+                        <li><strong>北谷地區：</strong> 也有提供 SUP 體驗的業者，離飯店較近。</li>
+                    </ul>
+                    <p><span class="pin-icon icon"></span>尋找業者：搜尋 "Okinawa SUP Kids" 或 "沖縄 SUP 親子" 尋找提供親子體驗課程的店家 (如：Pink Marlin Club, 青之洞窟屋等，請自行查詢評價與預約)。</p>
+                    <p><span class="pack-icon icon"></span>需準備：泳衣 (可先穿在裡面)、毛巾、換洗衣物、防曬 (建議物理性)、飲用水。</p>
+                    <p class="small-note">傍晚時段體驗 SUP 或許能看到夕陽，但需注意回程時間。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>18:30-20:00：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">とんかつ太郎 北谷店 (炸豬排太郎)</span></summary>
+                <div class="itinerary-details">
+                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=とんかつ太郎+北谷店" target="_blank">地址：沖縄県中頭郡北谷町北谷2丁目7-1</a></span></p>
+                     <p><span class="car-icon icon"></span>交通：從飯店出發約 <span class="highlight">5-10 分鐘車程</span>。若從恩納村返回，車程約 40-50 分鐘。</p>
+                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/とんかつ太郎+北谷店/" target="_blank">[飯店至餐廳路線]</a></span> | <a href="https://tabelog.com/okinawa/A4703/A470304/47005101/" target="_blank" class="info-link icon">[Tabelog 評價]</a></p>
+                    <p><span class="info-icon icon"></span>特色：當地人也推薦的日式炸豬排專賣店，提供多種部位的豬排選擇，份量足，高麗菜絲和白飯通常可續。</p>
+                    <p class="small-note">尖峰時間可能需要排隊。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>20:30：</strong> <span class="hotel-icon icon"></span>返回飯店休息</summary>
+                <div class="itinerary-details">
+                     <p><span class="walk-icon icon"></span>若體力允許，可以稍微散步逛逛夜晚的美國村，感受不同於白天的氛圍。</p>
+                     <p class="small-note">美國村夜晚燈飾點亮後很漂亮，適合拍照。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+     <section id="day3" aria-labelledby="day3-heading">
+        <h2 id="day3-heading">Day 3: 6月13日（週五）<span class="pin-icon icon"></span>名護動植物 & <span class="food-icon icon"></span>鳳梨樂園一日遊</h2>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>07:30-08:30：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
+                <div class="itinerary-details"></div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>08:30-09:40：</strong> <span class="car-icon icon"></span>開車前往 <span class="highlight">ネオパークオキナワ (名護自然動植物公園 Neo Park Okinawa)</span></summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=ネオパークオキナワ" target="_blank">地址：沖縄県名護市名護4607-41</a></span></p>
+                    <p><span class="car-icon icon"></span>交通：從飯店出發，車程約 <span class="highlight">60-70 分鐘</span>。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/Neo+Park+Okinawa/" target="_blank">[開車路線建議]</a></span></p>
+                    <p class="small-note">同樣建議走高速公路 (沖縄南IC → 許田IC)。</p>
+                    <p><a href="https://www.neopark.co.jp/chinese-t/" target="_blank" class="info-link icon">[景點官網/票價]</a></p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">0980-52-6348</span> 或 Map Code <span class="highlight">206 689 608*74</span>。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="time-icon icon"></span><strong>10:00-12:30：</strong> <span class="pin-icon icon"></span>探索名護動植物公園</summary>
+                <div class="itinerary-details">
+                     <p><span class="info-icon icon"></span>園區特色：以<span class="highlight">鳥類和自由放養動物</span>為主，打造接近自然的生態環境。互動性高，適合喜歡動物的小朋友。</p>
+                     <p>建議活動：</p>
+                    <ul>
+                        <li><strong>搭乘沖縄軽便鉄道 (Okinawa Light Railway)：</strong> <span class="train-icon icon"></span>
+                            <br>復古小火車會繞行園區外圍一圈 (約 20 分鐘)，可先大致了解園區樣貌。<span class="small-note">(需另外購票)</span></li>
+                        <li><strong>フラミンゴの湖 (紅鶴湖) 周邊步行區：</strong> <span class="walk-icon icon"></span>
+                            <br>主要步行區域，可以近距離觀察各種鳥類、水豚、象龜等。部分區域動物是自由走動的 (注意保持距離)。</li>
+                        <li><strong>ふれあい広場 (互動廣場)：</strong> <span class="pin-icon icon"></span>
+                             <br>可購買飼料餵食小動物 (如天竺鼠、兔子) 或與狗狗互動。<span class="small-note">(部分體驗可能需額外付費或有時間限制)</span></li>
+                    </ul>
+                    <p class="small-note">建議停留時間：約 2 - 2.5 小時。園區範圍大，大部分是戶外，請注意防曬、補充水分，穿著輕便好走的鞋子。</p>
+
+                    <div class="section-photos">
+                        <h3>名護動植物公園照片預覽</h3>
+                        <div class="photo-gallery">
+                            <div class="photo-item">
+                                <img src="image/neopark_train.jpg" alt="沖繩輕便鐵道">
+                                <div class="photo-caption">沖繩輕便鐵道</div>
+                            </div>
+                            <div class="photo-item">
+                               <img src="image/neopark_interaction.jpg" alt="互動廣場">
+                                <div class="photo-caption">互動廣場餵食</div>
+                            </div>
+                            <div class="photo-item">
+                               <img src="image/neopark_birds.jpg" alt="園區鳥類">
+                                <div class="photo-caption">自由活動的鳥類</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>12:30-13:45：</strong> <span class="food-icon icon"></span>午餐：<span class="highlight">百年古家 大家 (Ufuya)</span></summary>
+                <div class="itinerary-details">
+                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=百年古家+大家+うふやー" target="_blank">[大家 Ufuya 地圖]</a></span> 地址：沖縄県名護市中山90</p>
+                     <p><span class="car-icon icon"></span>交通：從 Neo Park 開車約 <span class="highlight">10-15 分鐘</span>。</p>
+                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Neo+Park+Okinawa/Ufuya/" target="_blank">[Neo Park 至 Ufuya 路線]</a></span> | <a href="https://ufuya.com/zh-TW/" target="_blank" class="info-link icon">[餐廳官網/菜單]</a></p>
+                    <p><span class="info-icon icon"></span>特色：在移築的百年琉球古宅中，享用著名的 <span class="highlight">Agu 豬料理</span> (推薦涮涮鍋或沖繩麵套餐)。用餐環境極具特色，庭園造景優美。</p>
+                     <div class="alert-note alert-icon icon">
+                        <strong>**預約建議**</strong><br>
+                        大家 Ufuya 是<span class="highlight">超人氣餐廳</span>，強烈建議<span class="highlight">事先透過官網或電話預約</span>，尤其是午餐尖峰時段，否則可能需要長時間排隊。
+                    </div>
+                    <p class="small-note">用餐+等待時間預留約 1 - 1.5 小時。</p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">0980-53-0280</span> 或 Map Code <span class="highlight">206 745 056*80</span>。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>14:00-15:30：</strong> <span class="pin-icon icon"></span>前往 <span class="highlight">ナゴパイナップルパーク (名護鳳梨園)</span></summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=ナゴパイナップルパーク" target="_blank">地址：沖縄県名護市為又1195</a></span></p>
+                     <p><span class="car-icon icon"></span>交通：從 大家 Ufuya 出發，車程約 <span class="highlight">10-15 分鐘</span>。</p>
+                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Ufuya/Nago+Pineapple+Park/" target="_blank">[Ufuya 至鳳梨園路線]</a></span> | <a href="https://www.nagopineapplepark.com/chinese-trad/" target="_blank" class="info-link icon">[景點官網/票價]</a></p>
+                    <p><span class="info-icon icon"></span>特色：</p>
+                    <ul>
+                        <li>搭乘自動駕駛的 <span class="highlight">鳳梨造型遊園車 (Pineapple Cart)</span> 參觀鳳梨田和熱帶植物園。</li>
+                        <li>園區內有多種鳳梨相關的 <span class="highlight">土產試吃試飲</span> (鳳梨酒、果汁、蛋糕、點心等)。</li>
+                        <li>必吃 <span class="highlight">鳳梨冰淇淋</span>！</li>
+                    </ul>
+                    <p class="small-note">建議停留時間：約 1 - 1.5 小時。後半段主要是購物區，可以購買伴手禮。適合親子輕鬆遊覽。</p>
+                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">0980-53-3659</span> 或 Map Code <span class="highlight">206 716 467*33</span>。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>15:45-17:00：</strong> <span class="car-icon icon"></span>開車返回飯店休息</summary>
+                <div class="itinerary-details">
+                    <p><span class="car-icon icon"></span>交通：從名護鳳梨園返回 Vessel Hotel，車程約 <span class="highlight">60-70 分鐘</span>。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Nago+Pineapple+Park/Vessel+Hotel+Campana+Okinawa/" target="_blank">[鳳梨園回飯店路線建議]</a></span></p>
+                    <p class="small-note">同樣建議走高速公路 (許田IC → 沖縄南IC)。返回飯店稍作休息，準備晚餐。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>17:30-19:00：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">焼肉きんぐ 北谷店 (燒肉 King)</span></summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=焼肉きんぐ+北谷店" target="_blank">[燒肉 King 北谷店地圖]</a></span> 地址：沖縄県中頭郡北谷町美浜2-4-5</p>
+                    <p><span class="car-icon icon"></span>交通：離飯店很近，<span class="highlight">步行約 10-15 分鐘</span> 或開車 3 分鐘。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/Yakiniku+King+Chatan/" target="_blank">[飯店至餐廳路線]</a></span> | <a href="https://www.yakiniku-king.jp/" target="_blank" class="info-link icon">[餐廳官網]</a> (可查菜單/分店/預約)</p>
+                    <p><span class="info-icon icon"></span>特色：日本連鎖<span class="highlight">燒肉吃到飽</span>餐廳，CP值高，有不同價位的套餐可選。使用<span class="highlight">平板點餐</span>，通常有多語言介面 (含中文)。提供兒童餐具。</p>
+                    <div class="alert-note alert-icon icon">
+                        <strong>**強烈建議預約**</strong><br>
+                        燒肉 King 是<span class="highlight">極受歡迎的排隊名店</span>，尤其是晚餐時段。強烈建議<span class="highlight">務必提前透過官網或其預約系統 (如 EPARK App) 預約訂位</span>，否則現場等候時間可能非常長 (1-2 小時以上)。
+                    </div>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>19:30：</strong> <span class="walk-icon icon"></span>美國村散步 或 <span class="hotel-icon icon"></span>回飯店休息</summary>
+                <div class="itinerary-details">
+                    <p><span class="shop-icon icon"></span>晚餐後可在美國村散步，逛逛特色小店，欣賞夜景。</p>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=美浜アメリカンビレッジ" target="_blank" class="map-link icon">[美國村地圖]</a> <a href="https://www.okinawa-americanvillage.com/" target="_blank" class="info-link icon">[美國村官網]</a></p>
+                    <p class="small-note">也可早點回飯店，讓孩子休息，或使用飯店設施。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="day4" aria-labelledby="day4-heading">
+        <h2 id="day4-heading">Day 4: 6月14日（週六）<span class="pin-icon icon"></span>公園放電 → <span class="shop-icon icon"></span>購物 → <span class="car-icon icon"></span>還車 → <span class="train-icon icon"></span>入住那霸</h2>
+        <div class="itinerary-item">
+             <details>
+                <summary><span class="time-icon icon"></span><strong>07:30-08:30：</strong> <span class="hotel-icon icon"></span>飯店早餐 & 整理行李</summary>
+                 <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>享用在 Vessel Hotel 的最後一頓早餐，並將所有行李整理好。</p>
+                 </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>09:00：</strong> <span class="hotel-icon icon"></span>辦理退房 (Check-out)</summary>
+                <div class="itinerary-details">
+                    <p><span class="check-icon icon"></span>前往櫃檯辦理退房手續。</p>
+                    <p><span class="car-icon icon"></span>將所有行李搬上車。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="time-icon icon"></span><strong>09:30-11:30：</strong> <span class="pin-icon icon"></span><span class="highlight">県営中城公園 (Nakagusuku Park)</span> 大放電</summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=中城公園" target="_blank">地址：沖縄県中頭郡中城村登又176</a></span></p>
+                    <p><span class="car-icon icon"></span>交通：從 Vessel Hotel 開車前往，車程約 <span class="highlight">30-40 分鐘</span>。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/Nakagusuku+Park/" target="_blank">[飯店至中城公園路線]</a></span> | <a href="https://nakagusukupark.jp/zh-TW/page/play" target="_blank" class="info-link icon">[公園官網/設施介紹]</a></p>
+                    <p><span class="info-icon icon"></span>特色：沖繩<span class="highlight">超大型免費</span>的縣立公園，以其<span class="highlight">巨型、多樣化的遊樂設施</span>聞名，包括大型彈跳床 (トランポリン)、各種長短溜滑梯、攀爬網、沙坑等。</p>
+                    <p><span class="pin-icon icon"></span>主要遊樂區：<span class="highlight">南區遊具廣場</span> (適合學齡兒童)、<span class="highlight">西區遊具廣場</span> (可能較適合幼兒)。園區內有多個停車場，建議停靠近南區或西區遊具的停車場。</p>
+                    <p class="small-note">建議停留時間：約 2 小時。這裡絕對是孩子們消耗精力的好地方！請務必<span class="highlight">注意防曬和補充水分</span>，部分設施在陽光下會很燙。</p>
+                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">098-935-2666</span> 或 Map Code <span class="highlight">33 410 697*17</span>。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>12:00-13:15：</strong> <span class="food-icon icon"></span>午餐 (AEON Mall Rycom 或附近)</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>午餐選擇：</p>
+                     <ul>
+                         <li><strong>直接前往下一站 <span class="highlight">AEON Mall Okinawa Rycom</span> 用餐：</strong>
+                             <br>從中城公園開車約 <span class="highlight">15-20 分鐘</span>即可抵達。
+                             <br><span class="route-link icon"><a href="https://www.google.com/maps/dir/Nakagusuku+Park/AEON+MALL+Okinawa+Rycom/" target="_blank">[中城公園至AEON Rycom路線]</a></span>
+                             <br>AEON Mall 內有<span class="highlight">大型美食街 (Food Court)</span> 和眾多獨立餐廳，選擇非常多樣。
+                         </li>
+                         <li><strong>中城公園附近：</strong> 選擇相對較少，可能需要稍微開車尋找。</li>
+                     </ul>
+                     <p class="small-note">在 AEON Mall 用餐最為方便，可以吃完直接開始逛。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+             <details>
+                <summary><span class="time-icon icon"></span><strong>13:30-15:30：</strong> <span class="shop-icon icon"></span><span class="highlight">イオンモール沖縄ライカム (AEON MALL Okinawa Rycom)</span> 購物時光</summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=イオンモール沖縄ライカム" target="_blank">地址：沖縄県中頭郡北中城村ライカム1番地</a></span></p>
+                    <p><a href="https://cht.okinawarycom-aeonmall.com/" target="_blank" class="info-link icon">[購物中心官網/樓層指南]</a></p>
+                    <p><span class="info-icon icon"></span>特色：沖繩<span class="highlight">最大型的購物中心</span>，品牌齊全，包含流行服飾、雜貨、大型超市 (AEON Style)、電器 (Bic Camera)、書店、電影院、兒童遊樂區等。</p>
+                    <p><span class="shop-icon icon"></span>購物重點：可以在這裡的超市購買零食、飲料；逛逛 Uniqlo, GU, Muji 等日系品牌；尋找兒童用品店 (如 Babies"R"Us)；或單純 window shopping。</p>
+                    <p class="small-note">建議停留時間：約 2 小時 (可依購物需求彈性調整)。記得逛逛中庭的<span class="highlight">大型水族箱</span>。</p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">098-930-0425</span> 或 Map Code <span class="highlight">33 530 406*45</span>。</p>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>15:45-16:30：</strong> <span class="car-icon icon"></span>開車前往那霸飯店 <span class="hotel-icon icon"></span>Hotel Ocean (先寄放行李)</summary>
+                 <div class="itinerary-details">
+                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Ocean+Naha+Kokusai+Dori" target="_blank">地址：沖縄県那覇市安里２丁目４−８</a></span> (靠近牧志站)</p>
+                     <p><span class="car-icon icon"></span>交通：從 AEON Mall Rycom 出發，車程約 <span class="highlight">30-50 分鐘</span>。</p>
+                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/AEON+MALL+Okinawa+Rycom/Hotel+Ocean,+Naha+Kokusai+Dori/" target="_blank">[AEON Rycom 至 Hotel Ocean 路線]</a></span></p>
+                     <p class="small-note">進入那霸市區後車流可能較多，尤其接近傍晚時段。建議走高速公路 (沖縄南IC 或 北中城IC → 那覇IC)。</p>
+                     <p><span class="hotel-icon icon"></span>抵達飯店後，<span class="highlight">先將行李寄放在櫃檯</span>。告知預計稍晚回來 Check-in。</p>
+                     <p><a href="https://www.hotelocean.jp/" target="_blank" class="info-link icon">[飯店官網]</a></p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">098-863-2288</span> 或 Map Code <span class="highlight">33 158 413*85</span>。</p>
+                 </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>16:45-17:45：</strong> <span class="car-icon icon"></span><span class="highlight">還車</span> @ OTSレンタカー DFS営業所 + 加油</summary>
+                <div class="itinerary-details">
+                    <div class="alert-note alert-icon icon">
+                        <strong>**還車前務必加滿油！**</strong><br>
+                         請預留 <span class="highlight">15-20 分鐘</span> 在還車點附近的加油站將油箱加滿 (レギュラー Regular / Regular Gasoline)。保留加油收據備查。
+                    </div>
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=OTSレンタカー+DFS営業所+Tギャラリア沖縄" target="_blank">還車地址：沖縄県那覇市おもろまち4-1 (T-Galleria by DFS, Okinawa 內)</a></span></p>
+                    <p><span class="car-icon icon"></span>交通：從 Hotel Ocean 開車前往 DFS T-Galleria，車程約 <span class="highlight">10-15 分鐘</span> (需加上找加油站及加油時間)。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hotel+Ocean,+Naha+Kokusai+Dori/T+Galleria+by+DFS,+Okinawa/" target="_blank">[Hotel Ocean 至 DFS 路線]</a></span></p>
+                    <p><span class="pin-icon icon"></span>周邊加油站：DFS 附近有多家加油站，如 ENEOS, Cosmo, Idemitsu 等。可使用 Google Maps 搜尋 "gas station near T Galleria Okinawa"。</p>
+                    <p><span class="check-icon icon"></span>還車流程：依指示將車開到 OTS 的還車區域，工作人員會檢查油量、車況，結算 ETC 費用 (若有使用)。</p>
+                     <p class="small-note">整個還車過程 (含加油) 建議預留約 45-60 分鐘。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="time-icon icon"></span><strong>17:45-18:15：</strong> <span class="train-icon icon"></span>/<span class="taxi-icon icon"></span> 從還車點返回 Hotel Ocean & Check-in</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>交通方式選擇：</p>
+                    <ul>
+                        <li>
+                            <strong><span class="train-icon icon"></span>搭乘 Yui Rail 單軌電車 (推薦):</strong>
+                            <ol>
+                                <li><span class="walk-icon icon"></span> 從 DFS T-Galleria <span class="highlight">步行</span> 至隔壁的單軌電車「<span class="highlight">おもろまち駅 (Omoromachi Station)</span>」(約 2-3 分鐘)。 <a href="https://www.google.com/maps/search/?api=1&query=Omoromachi+Station" target="_blank" class="map-link icon">[Omoromachi 站地圖]</a></li>
+                                <li><span class="train-icon icon"></span> 購買車票 (大人 ¥270)，搭乘往「那覇空港」方向列車，<span class="highlight">僅 1 站</span>。</li>
+                                <li><span class="train-icon icon"></span> 在「<span class="highlight">牧志駅 (Makishi Station)</span>」下車 (車程約 2 分鐘)。<a href="https://www.google.com/maps/search/?api=1&query=牧志駅" target="_blank" class="map-link icon">[Makishi 站地圖]</a></li>
+                                <li><span class="walk-icon icon"></span> 從牧志站 <span class="highlight">步行</span> 約 5-8 分鐘即可抵達 Hotel Ocean (往安里方向的出口較近)。<span class="route-link icon"><a href="https://www.google.com/maps/dir/Omoromachi+Station,+Naha,+Okinawa,+Japan/Makishi+Station,+Naha,+Okinawa,+Japan/Hotel+Ocean,+Naha+Kokusai+Dori/" target="_blank" title="包含步行和單軌路線">[單軌+步行路線]</a></span></li>
+                            </ol>
+                            <span class="small-note">總耗時約 20-30 分鐘。經濟實惠且能體驗單軌。</span>
+                        </li>
+                        <li style="margin-top: 15px;">
+                            <strong><span class="taxi-icon icon"></span>搭乘計程車:</strong>
+                            <br><span class="info-icon icon"></span>直接從 DFS T-Galleria 的計程車招呼站搭乘計程車回飯店。
+                            <br>車程約 <span class="highlight">10-15 分鐘</span>，費用預估約 <span class="highlight">¥1000 - ¥1500</span> (視交通狀況而定)。
+                            <br><span class="small-note">優點是方便快速，尤其是有較多行李或小孩疲累時。</span>
+                        </li>
+                    </ul>
+                     <p><span class="hotel-icon icon"></span>回到飯店後，辦理正式 Check-in 手續，領取房卡進入房間。</p>
+                     <p><span class="info-icon icon"></span>Hotel Ocean 特色：以<span class="highlight">超級豐富的兒童設施和備品</span>聞名，大廳有兒童遊戲區、免費點心飲料吧、各種租借品 (玩具、嬰兒用品等)，早餐也非常受親子歡迎。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>18:30-20:00：</strong> <span class="food-icon icon"></span>晚餐 (國際通周邊)</summary>
+                <div class="itinerary-details">
+                    <p><span class="walk-icon icon"></span>交通：從 Hotel Ocean <span class="highlight">步行</span> 即可抵達國際通主要區域。</p>
+                    <p><span class="info-icon icon"></span>晚餐選擇：國際通上餐廳林立。</p>
+                    <ul>
+                        <li><span class="highlight">暖暮拉麵 那覇牧志店：</span>人氣豚骨拉麵。<a href="https://www.google.com/maps/search/?api=1&query=暖暮拉麵+那覇牧志店" target="_blank" class="map-link icon">[地圖]</a> <span class="small-note">(離飯店近，但常排隊)</span></li>
+                        <li><span class="highlight">やっぱりステーキ (Yappari Steak) 國際通店：</span>平價牛排館。<a href="https://www.google.com/maps/search/?api=1&query=やっぱりステーキ+国際通り店" target="_blank" class="map-link icon">[地圖]</a></li>
+                        <li>其他沖繩麵店、居酒屋等。</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>20:00：</strong> <span class="hotel-icon icon"></span>飯店休息 或 <span class="shop-icon icon"></span>國際通夜間散策</summary>
+                <div class="itinerary-details">
+                    <p><span class="note-icon icon"></span>今天移動日較為奔波，可以讓孩子在飯店的遊戲區玩耍，或早點休息。</p>
+                    <p class="small-note">國際通晚上依然熱鬧，可稍微逛逛感受氣氛，但注意店家關門時間 (通常 21:00-22:00 陸續關閉)。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="day5" aria-labelledby="day5-heading">
+        <h2 id="day5-heading">Day 5: 6月15日（週日）<span class="walk-icon icon"></span>國際通文化美食探索日 (步行+單軌)</h2>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>08:00-09:00：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
+                <div class="itinerary-details">
+                     <p><span class="info-icon icon"></span>盡情享用 Hotel Ocean 著名的<span class="highlight">親子友善早餐</span>，據說有兒童專屬自助吧、離乳食品等。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="time-icon icon"></span><strong>09:30-11:30：</strong> <span class="walk-icon icon"></span>遊覽 <span class="highlight">国際通り (Kokusai Dori)</span> & <span class="highlight">第一牧志公設市場</span></summary>
+                <div class="itinerary-details">
+                    <p><span class="walk-icon icon"></span>交通：全程<span class="highlight">步行</span>。從 Hotel Ocean 出發，沿國際通往縣廳前方向慢慢逛。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hotel+Ocean,+Naha+Kokusai+Dori/Kokusai+Dori+Street,+Naha,+Okinawa,+Japan/" target="_blank">[飯店至國際通步行路線參考]</a></span></p>
+                    <p><span class="info-icon icon"></span>國際通：那霸最主要的觀光購物大道，長約 1.6 公里，兩旁商店、餐廳、土產店林立。</p>
+                     <p><span class="pin-icon icon"></span>第一牧志公設市場：</p>
+                     <ul>
+                         <li><span class="alert-text alert-icon icon">**最新狀態注意 (截至 2024 年初資訊):**</span> 原市場已重建完成並於 <span class="highlight">2023年3月重新開幕</span>。之前的臨時市場可能已停用。請以<span class="highlight">最新官方資訊為準</span>。</li>
+                         <li><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=第一牧志公設市場" target="_blank">[新市場 地圖]</a></span> (地址：那覇市松尾2-10-1)</li>
+                         <li><a href="https://makishi-public-market.jp/" target="_blank" class="info-link icon">[市場官網]</a></li>
+                         <li>特色：被稱為「那霸的廚房」，一樓販售各種生鮮海產、沖繩特有食材、肉品、漬物等；二樓設有食堂。</li>
+                         <li>體驗：感受當地市場的活力，看看色彩繽紛的魚類和有趣的食材。</li>
+                     </ul>
+                    <p class="small-note">從國際通轉進<span class="highlight">市場本通り (Ichiba Hondori)</span> 或 <span class="highlight">平和通り (Heiwa Dori)</span> 商店街即可找到市場入口。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>11:30-13:00：</strong> <span class="food-icon icon"></span>午餐 (牧志市場 或 國際通周邊)</summary>
+                <div class="itinerary-details">
+                     <p><span class="walk-icon icon"></span>午餐選擇：</p>
+                    <ul>
+                        <li><strong>市場二樓食堂 (推薦體驗)：</strong>
+                            <br>在一樓<span class="highlight">挑選喜歡的海鮮</span> (如：夜光貝、龍蝦、生魚片)，店家會幫你處理好。
+                            <br>拿到二樓的食堂，交給店家並選擇<span class="highlight">代客料理</span>方式 (通常有清蒸、奶油燒、生食等，需付料理費)。
+                            <br>推薦食堂：<span class="highlight">がんじゅう堂、ツバメ食堂 (燕食堂)</span> 等 (依現場店家為準)。
+                            <br><span class="small-note">人多時可能需要等候座位和料理時間。</span>
+                        </li>
+                        <li><strong>國際通周邊餐廳：</strong>
+                            <br> - <span class="highlight">肉屋 ししや (Nikuya Shishiya)：</span>石垣牛/Agu 豬漢堡排專賣店。<a href="https://www.google.com/maps/search/?api=1&query=肉屋+ししや+那覇" target="_blank" class="map-link icon">[地圖]</a> <a href="https://tabelog.com/okinawa/A4701/A470101/47007664/" target="_blank" class="info-link icon">[評價]</a>
+                            <br> - <span class="highlight">ポーたま 牧志市場店 (Pork Tamago Onigiri)：</span>人氣豬肉蛋飯糰。<a href="https://www.google.com/maps/search/?api=1&query=ポーたま+牧志市場店" target="_blank" class="map-link icon">[地圖]</a> (適合外帶當點心或輕食)
+                            <br> - <span class="highlight">Jef Burger ぬーやるバーガー (苦瓜漢堡)：</span>沖繩限定口味漢堡。<a href="https://www.google.com/maps/search/?api=1&query=Jef+Burger+平和通り店" target="_blank" class="map-link icon">[地圖]</a> (在平和通內)
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+             <details>
+                <summary><span class="time-icon icon"></span><strong>13:30-16:30：</strong> <span class="shop-icon icon"></span><span class="walk-icon icon"></span>國際通 & 周邊商店街自由探索 / 購物</summary>
+                <div class="itinerary-details">
+                     <p><span class="info-icon icon"></span>下午自由活動時間，深入探索國際通及周邊的特色街道和商店。</p>
+                     <p>建議區域：</p>
+                    <ul>
+                        <li><span class="shop-icon icon"></span><strong>國際通 (Kokusai Dori)：</strong>
+                            <br> - <span class="highlight">御菓子御殿 国際通り松尾店：</span>必買紅芋塔伴手禮。<a href="https://www.google.com/maps/search/?api=1&query=御菓子御殿+国際通り松尾店" target="_blank" class="map-link icon">[地圖]</a> <a href="https://www.okashigoten.co.jp/" target="_blank" class="info-link icon">[官網]</a>
+                            <br> - <span class="highlight">塩屋 (Ma-suya) 国際通り店：</span>各式沖繩鹽製品、鹽味冰淇淋。<a href="https://www.google.com/maps/search/?api=1&query=塩屋+国際通り店" target="_blank" class="map-link icon">[地圖]</a>
+                            <br> - <span class="highlight">ドン・キホーテ 国際通り店 (Don Quijote)：</span>大型藥妝雜貨店，商品齊全。<a href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ+国際通り店" target="_blank" class="map-link icon">[地圖]</a>
+                        </li>
+                         <li><span class="walk-icon icon"></span><strong>平和通り商店街 (Heiwa Dori)：</strong> 傳統拱廊商店街，較多在地風格小店、服飾、雜貨。<a href="https://www.google.com/maps/search/?api=1&query=平和通り商店街+入口+那覇" target="_blank" class="map-link icon">[入口地圖]</a></li>
+                         <li><span class="walk-icon icon"></span><strong>市場本通り (Ichiba Hondori)：</strong> 連接市場與國際通，販售乾貨、漬物、紀念品等。<a href="https://www.google.com/maps/search/?api=1&query=市場本通り+入口+那覇" target="_blank" class="map-link icon">[入口地圖]</a></li>
+                         <li><span class="walk-icon icon"></span><strong>浮島通り (Ukishima Dori)：</strong> 較有文青風格，多特色服飾店、咖啡廳、古著店。<a href="https://www.google.com/maps/search/?api=1&query=浮島通り+那覇" target="_blank" class="map-link icon">[街道地圖]</a></li>
+                         <li><span class="walk-icon icon"></span><strong>壺屋やちむん通り (Tsuboya Yachimun Street)：</strong> 陶器街，可欣賞購買琉球陶器 (やちむん)。<a href="https://www.google.com/maps/search/?api=1&query=壺屋やちむん通り" target="_blank" class="map-link icon">[街道地圖]</a> (離國際通稍遠，步行約 10-15 分鐘)</li>
+                    </ul>
+                     <p class="small-note">可依興趣選擇想逛的區域，累了隨時找間咖啡廳休息。</p>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>17:00-18:30：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">国際通り屋台村 (Kokusai Dori Food Village)</span></summary>
+                <div class="itinerary-details">
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=国際通り屋台村" target="_blank">地址：沖縄県那覇市牧志3丁目11-17</a></span></p>
+                    <p><span class="walk-icon icon"></span>交通：從國際通主要街道步行可達 (靠近 Hotel Ocean / 牧志站一側)。</p>
+                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/第一牧志公設市場/国際通り屋台村/" target="_blank">[牧志市場至屋台村步行路線]</a></span> | <a href="https://www.okinawa-yatai.jp/" target="_blank" class="info-link icon">[屋台村官網/店家介紹]</a></p>
+                    <p><span class="info-icon icon"></span>特色：集合了約 20 家小巧的<span class="highlight">日式攤位 (屋台)</span>，提供沖繩料理、壽司、串燒、拉麵、異國小吃等。氣氛熱鬧，中間有公共座位區。可以<span class="highlight">一次品嚐多種不同店家</span>的料理，適合想嚐鮮或多人分享。</p>
+                    <p class="small-note">座位有限，尖峰時間可能較擁擠。可先繞一圈看看各家菜單再決定。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>19:00：</strong> <span class="walk-icon icon"></span>步行返回飯店休息</summary>
+                <div class="itinerary-details">
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/国際通り屋台村/Hotel+Ocean,+Naha+Kokusai+Dori/" target="_blank">[屋台村回飯店步行路線]</a></span> (約 5-10 分鐘)</p>
+                    <div class="alert-note alert-icon icon">
+                        <strong>**步行日提醒**</strong><br>
+                        今天行程以步行為主，請務必穿著<span class="highlight">極度舒適好走的鞋子</span>！<br>
+                        國際通人潮眾多，請隨時注意孩童安全，尤其在穿越馬路或擁擠區域時。
+                    </div>
+                    <p class="small-note">回飯店後可整理今天購買的戰利品，好好休息。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="day6" aria-labelledby="day6-heading">
+        <h2 id="day6-heading">Day 6: 6月16日（週一）<span class="food-icon icon"></span>悠閒早午餐 → <span class="train-icon icon"></span>機場 → <span class="flight-icon icon"></span>賦歸</h2>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>08:00-09:00：</strong> <span class="hotel-icon icon"></span>飯店早餐 & 最後整理</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>把握最後機會享用 Hotel Ocean 的早餐，並完成所有行李打包。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>09:30：</strong> <span class="hotel-icon icon"></span>辦理退房 (Check-out) & 寄放行李</summary>
+                <div class="itinerary-details">
+                    <p><span class="check-icon icon"></span>前往櫃檯辦理退房手續。</p>
+                    <p><span class="info-icon icon"></span>向飯店櫃檯詢問<span class="highlight">寄放行李</span>服務 (通常免費)，告知預計下午回來領取。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="time-icon icon"></span><strong>10:00-11:30：</strong> <span class="food-icon icon"></span>悠閒早午餐 / 最後巡禮</summary>
+                <div class="itinerary-details">
+                     <p><span class="walk-icon icon"></span>地點選擇：</p>
+                     <ul>
+                         <li><strong><span class="highlight">一蘭拉麵 那覇国際通り店：</span></strong>
+                             <br><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=一蘭+那覇国際通り店" target="_blank">地址：沖縄県那覇市牧志1丁目2-24</a></span>
+                             <br><span class="walk-icon icon"></span>交通：從 Hotel Ocean 步行約 <span class="highlight">10-15 分鐘</span>。
+                             <br><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hotel+Ocean,+Naha+Kokusai+Dori/Ichiran+Naha+Kokusai+Dori+Street+Branch/" target="_blank">[飯店至一蘭步行路線]</a></span> | <a href="https://ichiran.com/shop/okinawa/kokusai-dori/" target="_blank" class="info-link icon">[官網]</a>
+                             <br><span class="small-note">若想念熟悉的味道可選擇。早上時段排隊人潮可能較少。</span>
+                         </li>
+                         <li><strong><span class="highlight">C&C BREAKFAST OKINAWA：</span></strong>
+                              <br>人氣早午餐店，舒芙蕾鬆餅有名。
+                              <br><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=C%26C+BREAKFAST+OKINAWA" target="_blank">地址：沖縄県那覇市松尾２丁目９−６ タカミネビル 1F</a></span> (靠近牧志市場)
+                              <br><span class="walk-icon icon"></span>交通：從 Hotel Ocean 步行約 15-20 分鐘。
+                               <br><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hotel+Ocean,+Naha+Kokusai+Dori/C%26C+BREAKFAST+OKINAWA/" target="_blank">[飯店至 C&C 步行路線]</a></span>
+                              <br><span class="small-note">可能需要排隊，建議早點去。</span>
+                         </li>
+                          <li><strong>國際通周邊其他咖啡廳：</strong> 悠閒地喝杯咖啡，做最後的回味。</li>
+                     </ul>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+             <details>
+                <summary><span class="time-icon icon"></span><strong>11:30-12:30：</strong> <span class="shop-icon icon"></span>最後採買 & <span class="hotel-icon icon"></span>領取行李</summary>
+                <div class="itinerary-details">
+                    <p><span class="shop-icon icon"></span>利用最後一點時間，在國際通補齊沒買到的伴手禮或紀念品。</p>
+                    <p><span class="hotel-icon icon"></span>返回 Hotel Ocean <span class="highlight">領取寄放的行李</span>。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>12:30-13:00：</strong> <span class="walk-icon icon"></span>步行前往 <span class="train-icon icon"></span>單軌電車「<span class="highlight">牧志駅 (Makishi Station)</span>」</summary>
+                <div class="itinerary-details">
+                    <p><span class="walk-icon icon"></span>交通：從 Hotel Ocean 拖著行李步行至牧志站，約 <span class="highlight">5-8 分鐘</span>。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hotel+Ocean,+Naha+Kokusai+Dori/Makishi+Station/" target="_blank">[飯店至牧志站步行路線]</a></span></p>
+                     <p class="small-note">牧志站有電梯或手扶梯可搭乘至月台層。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>13:00-13:30：</strong> <span class="train-icon icon"></span>搭乘單軌電車前往「<span class="highlight">那覇空港駅 (Naha Airport Station)</span>」</summary>
+                <div class="itinerary-details">
+                    <p><span class="train-icon icon"></span>購票：在牧志站自動售票機購買前往「那覇空港駅」的單程票 (大人 <span class="highlight">¥300</span>，兒童票價依年齡規定)。</p>
+                    <p><span class="train-icon icon"></span>搭乘：搭乘往「<span class="highlight">那覇空港</span>」方向的列車 (終點站)。</p>
+                    <p><span class="time-icon icon"></span>車程：約 <span class="highlight">16 分鐘</span>。</p>
+                    <p><a href="https://www.yui-rail.co.jp/route/" target="_blank" class="info-link icon">[單軌路線圖/時刻表]</a></p>
+                    <p class="small-note">列車班次密集，約 10 分鐘一班。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="time-icon icon"></span><strong>13:30-18:00：</strong> <span class="flight-icon icon"></span>那霸機場 (<span title="Naha Airport Code">OKA</span>) 報到 & 自由活動</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>抵達「那覇空港駅」後，跟隨指示前往 <span class="highlight">國際線航廈 (International Terminal)</span>。</p>
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=那覇空港+国際線ターミナル" target="_blank">[那霸機場國際線航廈地圖]</a></span> | <a href="https://www.naha-airport.co.jp/zh-hant/" target="_blank" class="info-link icon">[機場官網]</a></p>
+                    <p><span class="check-icon icon"></span><strong>辦理報到：</strong> 前往 <span class="highlight">中華航空 (China Airlines)</span> 櫃檯辦理登機手續、托運行李。 (建議提早辦理，避免排隊過久)。</p>
+                    <p><span class="shop-icon icon"></span><span class="food-icon icon"></span><strong>自由活動：</strong></p>
+                    <ul>
+                        <li><strong>國內線航廈 (連結通道可步行抵達)：</strong> <span class="highlight">強烈推薦！</span>國內線航廈 <span class="highlight">2樓</span> 有非常多的<span class="highlight">餐廳和伴手禮商店</span>。
+                            <br> - 必買/吃：<span class="highlight">Pork Tamago Onigiri (豬肉蛋飯糰) 機場店</span> (通常大排長龍)、<span class="highlight">A&W 漢堡</span>、Blue Seal 冰淇淋、各種沖繩限定土產。
+                            <br> - 可以在此處悠閒用餐或做最後的購物衝刺。
+                        </li>
+                         <li><strong>國際線航廈：</strong>
+                            <br> - 商店和餐廳選擇相對國內線<span class="highlight">少很多</span>。
+                            <br> - 出境後的免稅店可以購買菸酒、化妝品等。
+                         </li>
+                    </ul>
+                     <div class="alert-note alert-icon icon">
+                        <strong>**時間掌握**</strong><br>
+                        回程航班 CI123 是 <span class="highlight">21:05</span> 起飛。<br>
+                        - 建議最晚 <span class="highlight">19:00</span> 前完成報到和行李托運。<br>
+                        - 建議最晚 <span class="highlight">19:30 - 20:00</span> 之間通過安全檢查和證照查驗進入候機室。
+                    </div>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>18:00-20:30：</strong> <span class="flight-icon icon"></span>安檢 & 候機</summary>
+                <div class="itinerary-details">
+                    <p><span class="check-icon icon"></span>返回國際線航廈，通過<span class="highlight">安全檢查</span> (液體、尖銳物品等規定請注意)。</p>
+                    <p><span class="check-icon icon"></span>通過<span class="highlight">證照查驗</span> (出境審查)。</p>
+                    <p><span class="shop-icon icon"></span>逛逛出境後的免稅店。</p>
+                    <p><span class="info-icon icon"></span>前往指定的登機門，休息等待登機廣播。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>21:05-21:50 (台灣時間)：</strong> <span class="flight-icon icon"></span>搭乘華航 CI123 返回桃園 T2</summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span>飛行時間約 1小時45分鐘。</p>
+                    <p class="small-note">好好休息，回味沖繩之旅！</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+             <details>
+                <summary><span class="time-icon icon"></span><strong>21:50-23:00：</strong> <span class="flight-icon icon"></span>抵達桃機 & 入境</summary>
+                <div class="itinerary-details">
+                    <p><span class="check-icon icon"></span>抵達桃園機場第二航廈。</p>
+                    <p><span class="check-icon icon"></span>辦理入境手續 (可使用自動通關)。</p>
+                    <p><span class="check-icon icon"></span>前往行李轉盤領取托運行李。</p>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><span class="time-icon icon"></span><strong>23:00-00:00：</strong> <span class="car-icon icon"></span>返回竹北</summary>
+                <div class="itinerary-details">
+                    <p><span class="car-icon icon"></span>交通：取車或搭乘預約的機場接送返回竹北。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Taoyuan+International+Airport+Terminal+2/Hsinchu+County,+Zhubei+City/" target="_blank">[機場回竹北路線參考]</a></span> (車程約 45-60 分鐘)</p>
+                    <p class="success-text"><span class="hotel-icon icon"></span><span class="highlight">旅途順利結束！歡迎回家！好好休息！</span></p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="food" aria-labelledby="food-heading">
+        <h2 id="food-heading"><span class="food-icon icon"></span>沖繩必吃美食清單</h2>
+         <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;">
+            <li><span class="highlight">沖繩麵 (Okinawa Soba / Soki Soba)</span> - 各家湯頭、麵條、滷肉不同</li>
+            <li><span class="highlight">Agu 豬料理</span> - 涮涮鍋 (Shabu Shabu)、薑汁燒肉、炸豬排</li>
+            <li>石垣牛 / 沖繩和牛 - 燒肉、牛排、漢堡排</li>
+            <li><span class="highlight">Taco Rice (塔可飯)</span> - 墨西哥 Taco 肉醬 + 生菜起司鋪在飯上</li>
+            <li>海葡萄 (Umibudo) - 口感獨特的綠色藻類</li>
+            <li><span class="highlight">Blue Seal 冰淇淋</span> - 多種沖繩限定口味 (紅芋、鹽金楚糕、甘蔗等)</li>
+            <li>Orion 啤酒 - 沖繩在地啤酒</li>
+            <li>新鮮海產 - 牧志市場魚生、奶油烤貝類</li>
+            <li>苦瓜炒什錦 (Goya Chanpuru) - 沖繩家常菜代表</li>
+            <li>花生豆腐 (Jimami Tofu) - 口感像麻糬的豆腐</li>
+            <li>沖繩天婦羅 (Okinawa Tempura) - 較厚實的麵衣</li>
+            <li>サーターアンダギー (Sata Andagi) - 沖繩式開口笑甜甜圈</li>
+            <li><span class="highlight">Pork Tamago Onigiri (豬肉蛋飯糰)</span> - 現做美味</li>
+            <li>海蘊 (Mozuku) - 醋漬或天婦羅</li>
+            <li>島豆腐 (Shima Dofu) - 質地較硬的豆腐</li>
+         </ul>
+    </section>
+
+    <section id="shopping" aria-labelledby="shopping-heading">
+        <h2 id="shopping-heading"><span class="shop-icon icon"></span>沖繩推薦購物清單</h2>
+        <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;">
+            <li><span class="highlight">紅芋 (Beni Imo) 相關點心</span> - 御菓子御殿的紅芋塔最經典</li>
+            <li><span class="highlight">金楚糕 (Chinsuko)</span> - 傳統琉球餅乾，有多種口味</li>
+            <li>沖繩黑糖 (Kokuto) - 各式黑糖塊、黑糖漿、黑糖花生</li>
+            <li>雪塩 (Yukishio) / 各式海鹽 - 口味眾多，適合料理或直接品嚐</li>
+            <li>泡盛 (Awamori) - 沖繩特產蒸餾酒，可找「古酒」</li>
+            <li><span class="highlight">風獅爺 (Shisa) 擺飾/紀念品</span> - 成雙成對，造型各異</li>
+            <li>琉球玻璃製品 - 杯子、盤子等，色彩鮮豔</li>
+            <li>沖繩限定零食/飲料 - Calbee Jagarico 沖繩限定口味、Orion 啤酒</li>
+            <li>藥妝/日用品 - 國際通 Don Quijote 或 AEON 超市</li>
+            <li>海島風情服飾/配件 - 花襯衫、洋裝、海灘巾</li>
+            <li>美麗海水族館周邊 (若有去) - 鯨鯊、魟魚玩偶</li>
+            <li>特色 T-shirt / 文創商品 - 國際通小店或浮島通</li>
+            <li>沖繩限定泡麵 / 調味料</li>
+        </ul>
+    </section>
+
+     <section id="packing" aria-labelledby="packing-heading">
+        <h2 id="packing-heading"><span class="pack-icon icon"></span>打包建議清單</h2>
+        <div class="itinerary-item">
+            <details>
+                <summary><strong>重要文件類</strong></summary>
+                <div class="itinerary-details">
+                    <ul>
+                        <li><span class="check-icon icon"></span>護照 (正本 + 影本/照片備份)</li>
+                        <li><span class="check-icon icon"></span>駕照正本 + 日文譯本 (若有租車)</li>
+                        <li><span class="check-icon icon"></span>機票/電子機票</li>
+                        <li><span class="check-icon icon"></span>住宿/租車/活動預訂確認信 (電子或紙本)</li>
+                        <li><span class="check-icon icon"></span>旅遊保險證明</li>
+                        <li><span class="check-icon icon"></span>信用卡、日幣現金</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><strong>衣物鞋襪類</strong></summary>
+                <div class="itinerary-details">
+                    <ul>
+                        <li><span class="check-icon icon"></span>夏季輕便透氣衣物 (T-shirt, 短褲, 洋裝)</li>
+                        <li><span class="check-icon icon"></span>薄外套或罩衫 (防曬/室內冷氣)</li>
+                        <li><span class="check-icon icon"></span><span class="highlight">泳衣、泳褲、泳帽</span> (若要去海灘/泳池)</li>
+                        <li><span class="check-icon icon"></span>內衣褲、襪子</li>
+                        <li><span class="check-icon icon"></span><span class="highlight alert-text">超級舒適好走的鞋子</span> (運動鞋/休閒鞋)</li>
+                        <li><span class="check-icon icon"></span>涼鞋或拖鞋 (海灘/飯店內)</li>
+                        <li><span class="check-icon icon"></span>睡衣</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><strong>盥洗與防護用品類</strong></summary>
+                <div class="itinerary-details">
+                    <ul>
+                        <li><span class="check-icon icon"></span>個人盥洗用品 (牙刷/牙膏，部分飯店可能不主動提供)</li>
+                        <li><span class="check-icon icon"></span>保養品、化妝品</li>
+                        <li><span class="check-icon icon"></span><span class="highlight">高係數防曬乳</span> (臉部/身體，建議防水型)</li>
+                        <li><span class="check-icon icon"></span>曬後蘆薈膠/保濕乳液</li>
+                        <li><span class="check-icon icon"></span>帽子、太陽眼鏡</li>
+                        <li><span class="check-icon icon"></span><span class="highlight">雨具</span> (摺疊傘/輕便雨衣)</li>
+                        <li><span class="check-icon icon"></span>防蚊液/止癢藥膏</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><strong>兒童專用物品類</strong></summary>
+                <div class="itinerary-details">
+                    <ul>
+                        <li><span class="check-icon icon"></span>足夠的換洗衣物、尿布 (若需要)</li>
+                        <li><span class="check-icon icon"></span>輕便推車 或 揹巾</li>
+                        <li><span class="check-icon icon"></span>兒童餐具、圍兜、水壺</li>
+                        <li><span class="check-icon icon"></span>常備藥品 (退燒、止瀉、過敏、外傷藥膏、OK繃)</li>
+                        <li><span class="check-icon icon"></span>體溫計</li>
+                        <li><span class="check-icon icon"></span>安撫玩具、繪本</li>
+                        <li><span class="check-icon icon"></span>小零食、米餅</li>
+                        <li><span class="check-icon icon"></span>兒童泳具、玩沙工具 (可當地買)</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+            <details>
+                <summary><strong>電子產品與其他</strong></summary>
+                <div class="itinerary-details">
+                    <ul>
+                        <li><span class="check-icon icon"></span>手機、充電器、行動電源 (不可托運)</li>
+                        <li><span class="check-icon icon"></span>相機、記憶卡、充電器</li>
+                        <li><span class="check-icon icon"></span>日本上網工具 (WiFi分享器/SIM卡)</li>
+                        <li><span class="check-icon icon"></span>轉換插頭 (若有需要，但通常台日插座相容)</li>
+                        <li><span class="check-icon icon"></span>購物袋/環保袋</li>
+                        <li><span class="check-icon icon"></span>塑膠袋/夾鏈袋 (裝濕衣物/分裝小物)</li>
+                        <li><span class="check-icon icon"></span>個人藥品</li>
+                         <li><span class="check-icon icon"></span>小毛巾/濕紙巾</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="notes" aria-labelledby="notes-heading">
+        <h2 id="notes-heading"><span class="note-icon icon"></span>重要注意事項與提醒</h2>
+        <div class="itinerary-item">
+            <details open>
+                <summary><span class="alert-icon icon"></span><strong>天氣 & 穿著 (6月中旬)</strong></summary>
+                <div class="itinerary-details">
+                    <p><span class="info-icon icon"></span><strong>天氣型態：</strong> 6 月中下旬通常是沖繩<span class="highlight">梅雨季結束、夏季開始</span>的過渡期。天氣<span class="highlight alert-text">炎熱潮濕</span>，白天高溫可達 30°C 以上，體感溫度更高。午後可能會有<span class="highlight alert-text">短暫的強降雨或雷陣雨</span>。</p>
+                    <p><span class="pin-icon icon"></span><strong>必備物品：</strong></p>
+                     <ul>
+                         <li><span class="check-icon icon"></span><span class="alert-text">雨具：</span>摺疊傘必備，輕便雨衣也很好用 (尤其帶小孩)。</li>
+                         <li><span class="check-icon icon"></span><span class="alert-text">防曬：</span>高係數 (SPF50+, PA++++) 防曬乳、寬邊帽、太陽眼鏡、薄長袖/罩衫 (物理防曬)。沖繩陽光非常強烈！</li>
+                         <li><span class="check-icon icon"></span>防蚊液：傍晚或公園綠地可能有蚊蟲。</li>
+                     </ul>
+                    <p><span class="walk-icon icon"></span><strong>穿著建議：</strong> 以<span class="highlight">輕便、透氣、吸汗</span>的夏季衣物為主。鞋子務必選擇<span class="highlight alert-text">極度舒適好走</span>的款式！</p>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><span class="car-icon icon"></span><strong>交通 - 租車自駕 (Day 1-4)</strong></summary>
+                <div class="itinerary-details">
+                     <p><span class="pin-icon icon"></span><strong>必備文件：</strong> <span class="highlight alert-text">台灣駕照正本 + 日文譯本</span> (兩者缺一不可)。請務必放在隨身行李中。</p>
+                    <p><span class="alert-icon icon"></span><strong>右駕 & 左行：</strong> 日本是<span class="highlight">右駕左行</span>！
+                        <br> - <span class="alert-text">轉彎時：</span> 左轉小彎，右轉大彎，務必提醒自己駛入<span class="highlight">左側車道</span>。
+                        <br> - <span class="alert-text">雨刷與方向燈：</span> 控制桿位置與台灣<span class="highlight">相反</span>，容易打錯，需時間適應。
+                        <br> - 速度限制：遵守速限標誌 (高速公路通常 80km/h，一般道路 40-60km/h)。
+                    </p>
+                    <p><span class="info-icon icon"></span><strong>ETC 卡：</strong> 建議租用 ETC 卡，上下高速公路直接通過 ETC 通道，還車時一併結算費用，非常方便。</p>
+                     <p><span class="alert-icon icon"></span><strong>兒童安全座椅：</strong> 日本法規<span class="highlight">強制規定</span> 6 歲以下兒童<span class="highlight">必須</span>使用安全座椅。租車時務必依孩童年齡/體重預約合適的座椅。</p>
+                     <p><span class="alert-icon icon"></span><strong>還車加油：</strong> Day 4 還車前<span class="highlight alert-text">必須將油箱加滿</span> ("レギュラー" Regular / Regular Gasoline)。保留收據。請務必預留充足時間 (建議 30 分鐘以上) 尋找加油站並完成加油。</p>
+                    <p><span class="info-icon icon"></span><strong>導航：</strong> 車上通常配有日文/英文導航。善用 <span class="highlight">Map Code</span> 或 <span class="highlight">電話號碼</span> 輸入目的地。也可搭配手機 Google Maps 使用。</p>
+                    <p class="small-note">停車：大部分景點、購物中心、飯店都有停車場 (部分可能收費)。市區路邊停車較困難。</p>
+                </div>
+            </details>
+        </div>
+        <div class="itinerary-item">
+             <details>
+                <summary><span class="train-icon icon"></span><span class="taxi-icon icon"></span><span class="walk-icon icon"></span><strong>交通 - 那霸市區 (Day 4-6)</strong></summary>
+                <div class="itinerary-details">
+                    <p><span class="train-icon icon"></span><strong>Yui Rail 單軌電車：</strong>
+                        <br> - 路線：連接那霸機場與市區主要地點 (國際通區域有多站：県庁前、美栄橋、牧志；新都心：おもろまち；首里城：首里)。
+                        <br> - 票價：依距離計費，可購買<span class="highlight">單程票</span>或<span class="highlight">一日券 (24小時 ¥800) / 二日券 (48小時 ¥1400)</span>。一日/二日券從<span class="highlight">首次啟用時間起算 24/48 小時</span>。
+                        <br> - 評估：若一天內搭乘超過 3-4 次，或跨越多個區域，一日/二日券可能划算。可使用 Suica / PASMO 等 IC 卡 (請確認最新支援狀況)。
+                        <br> - <a href="https://www.yui-rail.co.jp/" target="_blank" class="info-link icon">[Yui Rail 官網]</a>
+                    </p>
+                    <p><span class="walk-icon icon"></span><strong>步行：</strong>
+                        <br> - <span class="highlight">國際通及其周邊</span> (平和通、市場本通、浮島通、牧志市場) 非常適合步行探索。
+                        <br> - 請穿著<span class="highlight alert-text">極度舒適</span>的鞋子！
+                    </p>
+                    <p><span class="taxi-icon icon"></span><strong>計程車：</strong>
+                        <br> - 起跳價約 ¥560-600 左右 (小型車)。
+                        <br> - 適合短程移動、帶小孩/行李、或單軌無法直達的點。
+                        <br> - 可在飯店、車站、景點的計程車招呼站搭乘，或在路邊招手 (空車會亮「空車」燈)。
+                        <br> - 可準備目的地的<span class="highlight">日文地址或地圖</span>給司機看。部分司機可用簡單英文溝通。
+                        <br> - 付款：現金為主，部分車輛可刷卡或使用電子支付 (上車前可詢問)。
+                    </p>
+                </div>
+            </details>
+        </div>
+         <div class="itinerary-item">
+            <details>
+                <summary><span P class="info-icon icon"></span><strong>其他實用資訊 & 提醒</strong></summary>
+                <div class="itinerary-details">
+                     <p><span class="pin-icon icon"></span><strong>行程彈性：</strong> 此為<span class="highlight">親子行程</span>，已考量放鬆與彈性，但仍需視<span class="highlight">當天孩子狀況、天氣</span>隨時調整。不必強求跑完所有點，旅途愉快最重要。</p>
+                    <p><span class="check-icon icon"></span><strong>預約：</strong> 熱門餐廳 (燒肉King, 大家Ufuya)、水上活動 (SUP) <span class="highlight alert-text">強烈建議提前預約</span>。</p>
+                     <p><span class="money-icon icon"></span><strong>貨幣與支付：</strong>
+                        <br> - 使用<span class="highlight">日圓 (JPY)</span>。
+                        <br> - 建議<span class="highlight">現金與信用卡搭配使用</span>。大型商場、飯店、連鎖餐廳多可刷卡。
+                        <br> - <span class="alert-text">市場、小店、計程車、部分餐廳</span>可能仍需使用<span class="highlight">現金</span>。多準備一些千元鈔和零錢。
+                    </p>
+                    <p><span class="web-icon icon"></span><strong>電壓與插座：</strong> 日本電壓 100V，插座為<span class="highlight">兩孔扁平型 (A型)</span>，與台灣相同。大部分台灣電器可直接使用。高功率電器 (如吹風機) 若非國際電壓，請勿使用。</p>
+                    <p><span class="web-icon icon"></span><strong>網路：</strong> 租用 WiFi 分享器、購買 SIM 卡或開通國際漫遊。建議至少準備兩種方案備用。</p>
+                    <p><span class="phone-icon icon"></span><strong>語言：</strong> 主要觀光區英文尚可溝通，飯店、大型商場通常沒問題。準備翻譯 App (如 Google Translate) 或 指指點點的圖卡/旅遊書很有幫助。</p>
+                    <p><span class="info-icon icon"></span><strong>垃圾桶：</strong> 日本街道垃圾桶<span class="highlight">不多</span>，請隨身攜帶小垃圾袋，將垃圾帶回飯店或找到垃圾桶再丟棄。</p>
+                    <p><span class="alert-icon icon"></span><strong>Day 1 清晨出發：</strong> 再次提醒，第一天 <span class="alert-text">04:00 從竹北出發</span>非常辛苦，請務必確保充足睡眠與駕駛安全。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+     <section id="emergency" aria-labelledby="emergency-heading">
+        <h2 id="emergency-heading"><span class="alert-icon icon"></span>緊急資訊與聯絡方式</h2>
+        <ul style="padding-left: 20px;">
+            <li><span class="phone-icon icon"></span><strong>日本緊急電話：</strong>
+                <br> - <span class="highlight">警察局：110</span>
+                <br> - <span class="highlight">消防/救護車：119</span> (若不確定狀況，撥打 119 通常也能協助聯繫警察)
+                <br> - <span class="highlight">海上保安廳 (海難事故)：118</span>
+                <br><span class="small-note">使用公共電話撥打緊急電話通常不需投幣。</span>
+            </li>
+             <li><span class="phone-icon icon"></span><strong>駐日代表處 (台北駐日經濟文化代表處 那霸分處)：</strong>
+                <br> - 地址：沖縄県那覇市久茂地3-15-9 アルテビル那覇 6樓 <a href="https://www.google.com/maps/search/?api=1&query=台北駐日経済文化代表処那覇分処" target="_blank" class="map-link icon">[地圖]</a>
+                <br> - 電話：(+81) 098-862-7008
+                <br> - <span class="alert-text">急難救助電話 (24小時)：(+81) 090-1942-1107</span> (僅供國人護照遺失、意外事件等急難狀況使用)
+                <br> - 網址：<a href="https://www.roc-taiwan.org/jpna/index.html" target="_blank" class="web-icon icon">[那霸分處官網]</a>
+            </li>
+            <li><span class="pin-icon icon"></span><strong>遺失信用卡：</strong> 請立即聯繫發卡銀行的海外緊急服務電話辦理掛失。</li>
+            <li><span class="pin-icon icon"></span><strong>保險公司聯絡方式：</strong> 將投保的保險公司緊急聯絡電話記錄下來。</li>
+             <li><span class="hotel-icon icon"></span><strong>住宿飯店聯絡電話：</strong>
+                 <br> - Vessel Hotel Campana: 098-936-1188
+                 <br> - Hotel Ocean Naha: 098-863-2288
+             </li>
+        </ul>
+    </section>
+
+
+    <footer class="page-footer">
+        <p>祝您有個愉快又難忘的沖繩親子之旅！</p>
+        <div class="footer-icons">
+             <span>✈️</span>
+             <span>☀️</span>
+             <span>🌊</span>
+             <span>👨‍👩‍👧‍👦</span>
+             <span>❤️</span>
+        </div>
+        <p><small>行程規劃書 v3.0 - 詳細優化版 (2024)</small></p>
+    </footer>
+
+</div>
+
+<script>
+    // Small script to ensure links in details open in new tabs if they don't have target="_blank" yet.
+    window.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.itinerary-details a').forEach(function(link) {
+            if (!link.getAttribute('target')) {
+                link.setAttribute('target', '_blank');
+                // Add rel="noopener noreferrer" for security when using target="_blank"
+                 if (!link.getAttribute('rel')) {
+                     link.setAttribute('rel', 'noopener noreferrer');
+                 }
+            }
+        });
+         // Smooth scroll for TOC links
+        document.querySelectorAll('.toc a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start' // Align top of the target element to the top of the viewport
+                    });
+                     // Optional: Briefly highlight the section
+                    targetElement.style.transition = 'background-color 0.5s ease';
+                    targetElement.style.backgroundColor = '#e7f3ff'; // Temporary highlight
+                    setTimeout(() => {
+                        targetElement.style.backgroundColor = ''; // Remove highlight
+                    }, 1500); // Highlight duration 1.5 seconds
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
+```
