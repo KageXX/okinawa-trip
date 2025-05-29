@@ -437,7 +437,9 @@
             h4 { font-size: 1.05em; margin-top: 15px; }
             .toc ul { gap: 8px; } /* Reduced gap */
             .toc a { padding: 5px 10px; font-size: 0.85em; }
-            .itinerary-item summary { padding: 12px 15px; font-size: 0.95em; }
+            .itinerary-item summary {
+                font-size: 0.88em;
+            }
             .itinerary-item summary::before { right: 15px; font-size: 1.2em;}
             .itinerary-details { padding: 15px 18px; } /* Adjust padding */
              .photo-gallery { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } /* Smaller images on mobile */
@@ -445,6 +447,27 @@
              .summary p { font-size: 0.95em; }
              .summary ul { padding-left: 20px; }
              li { padding-left: 1.3em; } /* Adjust list indent */
+
+            .multi-col-list {
+                columns: 1 !important;
+                gap: 0 !important;
+                padding-left: 20px !important; /* Keep original padding for list items */
+            }
+            .section-photos {
+                margin: 10px 0;
+                padding: 8px;
+            }
+            .summary {
+                padding: 10px 10px;
+                margin-bottom: 15px;
+            }
+            .itinerary-details {
+                padding: 8px 8px;
+            }
+            .toc {
+                padding: 8px 8px;
+                margin-bottom: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -453,6 +476,8 @@
              h3 { font-size: 1.1em; }
              .toc ul { justify-content: flex-start; } /* Align TOC items left */
              .footer-icons span { font-size: 1.4em; margin: 0 8px;}
+             .photo-gallery { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+             .photo-item img { height: 80px; }
         }
 
         /* Print optimization */
@@ -562,10 +587,10 @@
         <h2 id="summary-heading" style="background:none; border:none; padding:0; margin-top:0; font-size:1.5em;" class="text-center">行程總覽</h2>
         <p><span class="time-icon icon"></span><strong>旅行時間：</strong> <span class="highlight">2025年6月11日（週三）至 6月16日（週一）</span> (共6天5夜)</p>
         <p><span class="walk-icon icon"></span><strong>旅遊成員：</strong> 兩大（成人）兩小（<span class="highlight">5歲</span>）</p>
-        <p><span class="map-link icon"></span><strong>出發地：</strong> 新竹縣竹北市</p>
+        <p><span class="map-link icon"></span><strong>出發地：</strong> 新竹縣竹北市 <span class="highlight">(05:00 機場接送出發)</span></p>
         <p><span class="flight-icon icon"></span><strong>航班資訊：</strong>
             <span title="中華航空">中華航空 (China Airlines)</span><br>
-            &nbsp;&nbsp;&nbsp;去程: <span class="highlight">CI120</span> | 08:00 <span title="桃園機場 T2">TPE</span> → 10:40 <span title="那霸機場">OKA</span> (當地時間)<br>
+            &nbsp;&nbsp;&nbsp;去程: <span class="highlight">CI120</span> | 08:00 <span title="桃園機場 T2">TPE</span> → 10:25 <span title="那霸機場">OKA</span> (當地時間)<br>
             &nbsp;&nbsp;&nbsp;回程: <span class="highlight">CI123</span> | 21:05 <span title="那霸機場">OKA</span> → 21:50 <span title="桃園機場 T2">TPE</span> (台灣時間)
         </p>
          <p><span class="car-icon icon"></span><strong>租車資訊：</strong>
@@ -608,7 +633,7 @@
 
     <section id="prep" aria-labelledby="prep-heading">
         <h2 id="prep-heading"><span class="check-icon icon"></span>行前準備清單</h2>
-        <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;">
+        <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;" class="multi-col-list">
             <li><span class="pin-icon icon"></span><strong>護照確認：</strong> 檢查所有成員護照效期 (需有6個月以上)。</li>
             <li><span class="pin-icon icon"></span><strong>駕照與譯本：</strong> 駕駛者申請 <span class="highlight">駕照日文譯本</span> (監理站辦理)，出國時需攜帶 <span class="alert-text">正本駕照 + 譯本</span>。</li>
             <li><span class="pin-icon icon"></span><strong>機票/住宿預訂：</strong> 確認所有預訂紀錄、列印或存檔。</li>
@@ -628,9 +653,9 @@
         <h2 id="day1-heading">Day 1: 6月11日（週三）<span class="flight-icon icon"></span>啟程 → <span class="car-icon icon"></span>租車 → <span class="hotel-icon icon"></span>美國村初體驗</h2>
         <div class="itinerary-item">
             <details open> <!-- Default open first day -->
-                <summary><span class="time-icon icon"></span><strong><span class="alert-text">04:00-05:00：</span></strong> <span class="car-icon icon"></span>竹北出發 → 桃園機場T2</summary>
+                <summary><span class="time-icon icon"></span><strong><span class="alert-text">05:00-06:00 (約 1 小時)：</span></strong> <span class="car-icon icon"></span>竹北出發 → 桃園機場T2</summary>
                 <div class="itinerary-details">
-                    <p><span class="info-icon icon"></span>交通：自行開車或預約機場接送。</p>
+                    <p><span class="info-icon icon"></span>交通：預約機場接送。</p>
                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hsinchu+County,+Zhubei+City/Taoyuan+International+Airport+Terminal+2/" target="_blank" title="Google Maps 路線規劃">[開車路線參考]</a></span> (車程約 45-60 分鐘)</p>
                     <div class="alert-note alert-icon icon">
                         <strong>**極早出發提醒**</strong><br>
@@ -641,7 +666,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>05:00-07:30：</strong> <span class="flight-icon icon"></span>桃園機場報到 & 出境</summary>
+                <summary><span class="time-icon icon"></span><strong>06:00-07:30 (約 1.5 小時)：</strong> <span class="flight-icon icon"></span>桃園機場報到 & 出境</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>地點：桃園機場第二航廈 中華航空櫃檯。</p>
                     <p><span class="check-icon icon"></span>流程：辦理登機手續、托運行李、安全檢查、證照查驗。</p>
@@ -651,16 +676,16 @@
         </div>
         <div class="itinerary-item">
              <details>
-                <summary><span class="time-icon icon"></span><strong>08:00-10:40 (當地時間)：</strong> <span class="flight-icon icon"></span>搭乘華航 CI120 前往沖繩</summary>
+                <summary><span class="time-icon icon"></span><strong>08:00-10:25 (當地時間) (飛行約 1小時25分)：</strong> <span class="flight-icon icon"></span>搭乘華航 CI120 前往沖繩</summary>
                 <div class="itinerary-details">
-                     <p><span class="info-icon icon"></span>目的地：沖繩那霸機場 (<span title="Naha Airport Code">OKA</span>)。</p>
-                     <p class="small-note">飛行時間約 1小時40分鐘。沖繩比台灣 <span class="highlight">快 1 小時</span> (GMT+9)。</p>
+                     <p><span class="info-icon icon"></span>目的地：沖縄那霸機場 (<span title="Naha Airport Code">OKA</span>)。</p>
+                     <p class="small-note">飛行時間約 1小時25分鐘。沖縄比台灣 <span class="highlight">快 1 小時</span> (GMT+9)。</p>
                 </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>10:45-11:30：</strong> <span class="flight-icon icon"></span>抵達那霸 & 入境手續</summary>
+                <summary><span class="time-icon icon"></span><strong>10:30-11:15 (約 45 分鐘)：</strong> <span class="flight-icon icon"></span>抵達那霸 & 入境手續</summary>
                 <div class="itinerary-details">
                     <p><span class="check-icon icon"></span>流程：跟隨指示前往入境審查 (外國人通道)、按指紋拍照、領取托運行李、海關申報 (通常無申報物品可走綠線通道)。</p>
                     <p class="small-note">可先填寫好入境卡和海關申報單 (機上會發放，或線上 Visit Japan Web 填寫)。</p>
@@ -669,11 +694,12 @@
         </div>
          <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>11:30-12:15：</strong> <span class="car-icon icon"></span>OTS 租車 (臨空豐崎營業所)</summary>
+                <summary><span class="time-icon icon"></span><strong>11:15-12:00 (約 45 分鐘)：</strong> <span class="car-icon icon"></span>OTS 租車 (臨空豐崎營業所)</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>流程：</p>
                     <ol>
                         <li>出國際線入境大廳後，尋找 <span class="highlight">OTS 租車的接待櫃檯/指示牌</span> (通常在出口附近或需到指定集合點)。</li>
+                        <li><p><span class='alert-icon icon'></span><strong>溫馨提示：</strong>機場取車流程（包含接駁、文件處理、檢查車輛）可能需時較長（預計 30-60 分鐘，旺季可能更久），請預留充足時間，避免影響後續行程。</p></li>
                         <li>出示預約證明，工作人員會引導搭乘 <span class="highlight">免費接駁巴士</span> 前往臨空豐崎營業所 (車程約 10-15 分鐘)。</li>
                         <li>抵達營業所後，抽取號碼牌等待叫號辦理手續。</li>
                     </ol>
@@ -686,7 +712,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>12:30-13:30：</strong> <span class="food-icon icon"></span>午餐 (豐崎地區)</summary>
+                <summary><span class="time-icon icon"></span><strong>12:15-13:15 (約 1 小時)：</strong> <span class="food-icon icon"></span>午餐 (豐崎地區)</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>地點建議：<span class="highlight">iias 沖繩豐崎購物中心</span></p>
                     <p><span class="car-icon icon"></span>交通：從 OTS 營業所開車前往非常近 (約 2-3 分鐘)。</p>
@@ -697,7 +723,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>13:45-15:45：</strong> <span class="pin-icon icon"></span>參觀 <span class="highlight">DMM Kariyushi 水族館</span></summary>
+                <summary><span class="time-icon icon"></span><strong>13:30-15:30 (約 2 小時)：</strong> <span class="pin-icon icon"></span>參觀 <span class="highlight">DMM Kariyushi 水族館</span></summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"></span>地址：沖縄県豊見城市豊崎３−３５ (就在 iias 購物中心旁)</p>
                     <p><span class="car-icon icon"></span>交通：從 iias 午餐地點 <span class="highlight">步行</span> 或開車極短距離。</p>
@@ -727,19 +753,19 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>15:45-16:45：</strong> <span class="car-icon icon"></span>開車前往飯店 <span class="hotel-icon icon"></span>VESSEL HOTEL CAMPANA OKINAWA</summary>
+                <summary><span class="time-icon icon"></span><strong>15:30-16:30 (約 1 小時)：</strong> <span class="car-icon icon"></span>開車前往飯店 <span class="hotel-icon icon"></span>VESSEL HOTEL CAMPANA OKINAWA</summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=VESSEL+HOTEL+CAMPANA+OKINAWA" target="_blank">飯店地址：沖縄県北谷町美浜9番地22 (美國村內)</a></span></p>
                     <p><span class="car-icon icon"></span>交通：從 DMM 水族館出發，車程約 <span class="highlight">40-60 分鐘</span>。</p>
                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/DMM+Kariyushi+Aquarium/Vessel+Hotel+Campana+Okinawa/" target="_blank">[開車路線建議]</a></span></p>
                     <p class="small-note">可選擇走<span title="沖縄自動車道">高速公路</span> (豐見城・名嘉地IC → 沖縄南IC，需支付過路費) 可避開部分市區路段，時間較穩定。下班時間國道 58 號可能塞車。</p>
-                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入飯店電話 <span class="highlight">098-936-1188</span> 或 Map Code <span class="highlight">33 525 201*66</span>。</p>
+                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入飯店電話 <a href="tel:+81989361188" class="highlight">098-936-1188</a> 或 Map Code <span class="highlight">33 525 201*66</span>。</p>
                 </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>16:45 之後：</strong> <span class="hotel-icon icon"></span>飯店 Check-in & 房間休息</summary>
+                <summary><span class="time-icon icon"></span><strong>16:30 之後：</strong> <span class="hotel-icon icon"></span>飯店 Check-in & 房間休息</summary>
                 <div class="itinerary-details">
                     <p><span class="check-icon icon"></span>辦理入住手續，領取房卡，將行李搬入房間。</p>
                     <p><a href="https://www.vessel-hotel.jp/campana/okinawa/" target="_blank" class="info-link icon">[飯店官網/設施]</a></p>
@@ -750,7 +776,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>18:00-19:30：</strong> <span class="food-icon icon"></span>晚餐 (美國村內)</summary>
+                <summary><span class="time-icon icon"></span><strong>18:00-19:30 (約 1.5 小時)：</strong> <span class="food-icon icon"></span>晚餐 (美國村內)</summary>
                 <div class="itinerary-details">
                     <p><span class="walk-icon icon"></span>交通：從飯店<span class="highlight">步行</span>即可進入美國村區域。</p>
                     <p><span class="info-icon icon"></span>晚餐選擇：美國村內餐廳選擇多樣，有美式、日式、沖繩料理等。</p>
@@ -778,7 +804,7 @@
         <h2 id="day2-heading">Day 2: 6月12日（週四）<span class="pin-icon icon"></span>部瀨名海底探險 & <span class="walk-icon icon"></span>沙灘時光</h2>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>07:30-08:30：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
+                <summary><span class="time-icon icon"></span><strong>07:30-08:30 (約 1 小時)：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>享受 Vessel Hotel 評價頗高的豐盛早餐，補充體力。</p>
                 </div>
@@ -786,7 +812,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>08:30-09:30：</strong> <span class="car-icon icon"></span>開車前往 <span class="highlight">部瀨名海中公園 (Busena Marine Park)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>08:30-09:30 (約 1 小時)：</strong> <span class="car-icon icon"></span>開車前往 <span class="highlight">部瀨名海中公園 (Busena Marine Park)</span></summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=ブセナ海中公園" target="_blank">地址：沖縄県名護市字喜瀬1744-1</a></span> (注意: 在名護市喜瀬 Kise，非恩納村)</p>
                     <p><span class="car-icon icon"></span>交通：從飯店出發，車程約 <span class="highlight">50-60 分鐘</span>。</p>
@@ -798,7 +824,7 @@
         </div>
         <div class="itinerary-item">
             <details open>
-                <summary><span class="time-icon icon"></span><strong>09:40-11:30：</strong> <span class="pin-icon icon"></span>體驗部瀨名海中公園設施</summary>
+                <summary><span class="time-icon icon"></span><strong>09:40-11:30 (約 1小時50分)：</strong> <span class="pin-icon icon"></span>體驗部瀨名海中公園設施</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>抵達後先至售票處購買 <span class="highlight">玻璃底船 + 海中展望塔 套票</span> (較划算)。</p>
                     <p>從停車場/售票處搭乘<span class="highlight">免費紅色接駁巴士</span>前往海灘及設施區域。</p>
@@ -833,15 +859,15 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>12:00-13:00：</strong> <span class="food-icon icon"></span>午餐 (部瀨名或恩納村附近)</summary>
+                <summary><span class="time-icon icon"></span><strong>12:00-13:00 (約 1 小時)：</strong> <span class="food-icon icon"></span>午餐 (部瀨名或恩納村附近)</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>午餐選擇：</p>
                     <ul>
                         <li><strong>部瀨名海灘度假村內餐廳：</strong> 較方便，但價位可能稍高。</li>
                         <li><strong>開車前往恩納村方向 (約 10-15 分鐘車程)：</strong>
-                            <br> - <span class="highlight">なかむらそば (中村 Soba)：</span>人氣沖繩麵店。<a href="https://www.google.com/maps/search/?api=1&query=なかむらそば+恩納村" target="_blank" class="map-link icon">[地圖]</a>
+                            <br> - <span class="highlight">なかむらそば (中村 Soba)：</span>人氣沖縄麵店。<a href="https://www.google.com/maps/search/?api=1&query=なかむらそば+恩納村" target="_blank" class="map-link icon">[地圖]</a>
                             <br> - <span class="highlight">元祖海ぶどう 本店：</span>海葡萄蓋飯創始店。<a href="https://www.google.com/maps/search/?api=1&query=元祖海ぶどう+本店" target="_blank" class="map-link icon">[地圖]</a>
-                            <br> - 或沿國道 58 號線尋找其他海景餐廳或沖繩料理店。
+                            <br> - 或沿國道 58 號線尋找其他海景餐廳或沖縄料理店。
                             <span class="route-link icon"><a href="https://www.google.com/maps/dir/Busena+Marine+Park/Onna,+Kunigami+District,+Okinawa,+Japan/" target="_blank">[部瀨名至恩納村路線參考]</a></span>
                         </li>
                     </ul>
@@ -850,7 +876,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>13:30-16:30：</strong> <span class="hotel-icon icon"></span>返回飯店稍作休息 或 <span class="walk-icon icon"></span><span class="highlight">北谷公園 日落海灘 (Sunset Beach)</span> 玩沙戲水</summary>
+                <summary><span class="time-icon icon"></span><strong>13:30-16:30 (彈性約 3 小時)：</strong> <span class="hotel-icon icon"></span>返回飯店稍作休息 或 <span class="walk-icon icon"></span><span class="highlight">北谷公園 日落海灘 (Sunset Beach)</span> 玩沙戲水</summary>
                 <div class="itinerary-details">
                     <p><span class="car-icon icon"></span>交通：從午餐地點開車返回 Vessel Hotel (車程約 40-60 分鐘)。<span class="route-link icon"><a href="https://www.google.com/maps/dir/元祖海ぶどう+本店/Vessel+Hotel+Campana+Okinawa/" target="_blank">[範例:恩納村回飯店路線]</a></span></p>
                     <p><span class="info-icon icon"></span>下午活動選擇：</p>
@@ -867,7 +893,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>17:00-18:00：</strong> <span class="pin-icon icon"></span><span class="highlight">SUP 體驗 (選擇性活動)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>17:00-18:00 (約 1 小時)：</strong> <span class="pin-icon icon"></span><span class="highlight">SUP 體驗 (選擇性活動)</span><span class="highlight alert-text" style="font-size:0.8em; padding: 2px 4px; margin-left: 5px;">需預約</span></summary>
                 <div class="itinerary-details">
                     <div class="alert-note alert-icon icon">
                         <strong>**注意事項**</strong><br>
@@ -888,7 +914,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>18:30-20:00：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">とんかつ太郎 北谷店 (炸豬排太郎)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>18:30-20:00 (約 1.5 小時)：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">とんかつ太郎 北谷店 (炸豬排太郎)</span></summary>
                 <div class="itinerary-details">
                      <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=とんかつ太郎+北谷店" target="_blank">地址：沖縄県中頭郡北谷町北谷2丁目7-1</a></span></p>
                      <p><span class="car-icon icon"></span>交通：從飯店出發約 <span class="highlight">5-10 分鐘車程</span>。若從恩納村返回，車程約 40-50 分鐘。</p>
@@ -906,38 +932,37 @@
                      <p class="small-note">美國村夜晚燈飾點亮後很漂亮，適合拍照。</p>
                 </div>
             </details>
-        </div>
     </section>
 
      <section id="day3" aria-labelledby="day3-heading">
         <h2 id="day3-heading">Day 3: 6月13日（週五）<span class="pin-icon icon"></span>名護動植物 & <span class="food-icon icon"></span>鳳梨樂園一日遊</h2>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>07:30-08:30：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
+                <summary><span class="time-icon icon"></span><strong>07:30-08:30 (約 1 小時)：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
                 <div class="itinerary-details"></div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>08:30-09:40：</strong> <span class="car-icon icon"></span>開車前往 <span class="highlight">ネオパークオキナワ (名護自然動植物公園 Neo Park Okinawa)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>08:30-09:40 (約 1小時10分)：</strong> <span class="car-icon icon"></span>開車前往 <span class="highlight">ネオパークオキナワ (名護自然動植物公園 Neo Park Okinawa)</span></summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=ネオパークオキナワ" target="_blank">地址：沖縄県名護市名護4607-41</a></span></p>
                     <p><span class="car-icon icon"></span>交通：從飯店出發，車程約 <span class="highlight">60-70 分鐘</span>。</p>
                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/Neo+Park+Okinawa/" target="_blank">[開車路線建議]</a></span></p>
                     <p class="small-note">同樣建議走高速公路 (沖縄南IC → 許田IC)。</p>
                     <p><a href="https://www.neopark.co.jp/chinese-t/" target="_blank" class="info-link icon">[景點官網/票價]</a></p>
-                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">0980-52-6348</span> 或 Map Code <span class="highlight">206 689 608*74</span>。</p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <a href="tel:+81980526348" class="highlight">0980-52-6348</a> 或 Map Code <span class="highlight">206 689 608*74</span>。</p>
                 </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details open>
-                <summary><span class="time-icon icon"></span><strong>10:00-12:30：</strong> <span class="pin-icon icon"></span>探索名護動植物公園</summary>
+                <summary><span class="time-icon icon"></span><strong>10:00-12:30 (約 2.5 小時)：</strong> <span class="pin-icon icon"></span>探索名護動植物公園</summary>
                 <div class="itinerary-details">
                      <p><span class="info-icon icon"></span>園區特色：以<span class="highlight">鳥類和自由放養動物</span>為主，打造接近自然的生態環境。互動性高，適合喜歡動物的小朋友。</p>
                      <p>建議活動：</p>
                     <ul>
-                        <li><strong>搭乘沖縄輕便鉄道 (Okinawa Light Railway)：</strong> <span class="train-icon icon"></span>
+                        <li><strong>搭乘沖縄軽便鉄道 (Okinawa Light Railway)：</strong> <span class="train-icon icon"></span>
                             <br>復古小火車會繞行園區外圍一圈 (約 20 分鐘)，可先大致了解園區樣貌。<span class="small-note">(需另外購票)</span></li>
                         <li><strong>フラミンゴの湖 (紅鶴湖) 周邊步行區：</strong> <span class="walk-icon icon"></span>
                             <br>主要步行區域，可以近距離觀察各種鳥類、水豚、象龜等。部分區域動物是自由走動的 (注意保持距離)。</li>
@@ -946,29 +971,13 @@
                     </ul>
                     <p class="small-note">建議停留時間：約 2 - 2.5 小時。園區範圍大，大部分是戶外，請注意防曬、補充水分，穿著輕便好走的鞋子。</p>
 
-                    <div class="section-photos">
-                        <h3>名護動植物公園照片預覽</h3>
-                        <div class="photo-gallery">
-                            <div class="photo-item">
-                                <img src="image/neopark_train.jpg" alt="沖繩輕便鐵道">
-                                <div class="photo-caption">沖繩輕便鐵道</div>
-                            </div>
-                            <div class="photo-item">
-                               <img src="image/neopark_interaction.jpg" alt="互動廣場">
-                                <div class="photo-caption">互動廣場餵食</div>
-                            </div>
-                            <div class="photo-item">
-                               <img src="image/neopark_birds.jpg" alt="園區鳥類">
-                                <div class="photo-caption">自由活動的鳥類</div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>12:30-13:45：</strong> <span class="food-icon icon"></span>午餐：<span class="highlight">百年古家 大家 (Ufuya)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>12:30-13:45 (約 1小時15分)：</strong> <span class="food-icon icon"></span>午餐：<span class="highlight">百年古家 大家 (Ufuya)</span><span class="highlight alert-text" style="font-size:0.8em; padding: 2px 4px; margin-left: 5px;">強烈建議預約</span></summary>
                 <div class="itinerary-details">
                      <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=百年古家+大家+うふやー" target="_blank">[大家 Ufuya 地圖]</a></span> 地址：沖縄県名護市中山90</p>
                      <p><span class="car-icon icon"></span>交通：從 Neo Park 開車約 <span class="highlight">10-15 分鐘</span>。</p>
@@ -976,16 +985,16 @@
                     <p><span class="info-icon icon"></span>特色：在移築的百年琉球古宅中，享用著名的 <span class="highlight">Agu 豬料理</span> (推薦涮涮鍋或沖繩麵套餐)。用餐環境極具特色，庭園造景優美。</p>
                      <div class="alert-note alert-icon icon">
                         <strong>**預約建議**</strong><br>
-                        大家 Ufuya 是<span class="highlight">超人氣餐廳</span>，強烈建議<span class="highlight">事先透過官網或電話預約</span>，尤其是午餐尖峰時段，否則可能需要長時間排隊。
+                        大家 Ufuya 是<span class="highlight">超人氣餐廳</span>，強烈建議<span class="highlight">事先透過官網或電話 (<a href="tel:+81980530280">0980-53-0280</a>) 預約</span>，尤其是午餐尖峰時段，否則可能需要長時間排隊。
                     </div>
                     <p class="small-note">用餐+等待時間預留約 1 - 1.5 小時。</p>
-                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">0980-53-0280</span> 或 Map Code <span class="highlight">206 745 056*80</span>。</p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <a href="tel:+81980530280" class="highlight">0980-53-0280</a> 或 Map Code <span class="highlight">206 745 056*80</span>。</p>
                 </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>14:00-15:30：</strong> <span class="pin-icon icon"></span>前往 <span class="highlight">ナゴパイナップルパーク (名護鳳梨園)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>14:00-15:30 (約 1.5 小時)：</strong> <span class="pin-icon icon"></span>前往 <span class="highlight">ナゴパイナップルパーク (名護鳳梨園)</span></summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=ナゴパイナップルパーク" target="_blank">地址：沖縄県名護市為又1195</a></span></p>
                      <p><span class="car-icon icon"></span>交通：從 大家 Ufuya 出發，車程約 <span class="highlight">10-15 分鐘</span>。</p>
@@ -997,13 +1006,13 @@
                         <li>必吃 <span class="highlight">鳳梨冰淇淋</span>！</li>
                     </ul>
                     <p class="small-note">建議停留時間：約 1 - 1.5 小時。後半段主要是購物區，可以購買伴手禮。適合親子輕鬆遊覽。</p>
-                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">0980-53-3659</span> 或 Map Code <span class="highlight">206 716 467*33</span>。</p>
+                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <a href="tel:+81980533659" class="highlight">0980-53-3659</a> 或 Map Code <span class="highlight">206 716 467*33</span>。</p>
                 </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>15:45-17:00：</strong> <span class="car-icon icon"></span>開車返回飯店休息</summary>
+                <summary><span class="time-icon icon"></span><strong>15:45-17:00 (約 1小時15分)：</strong> <span class="car-icon icon"></span>開車返回飯店休息</summary>
                 <div class="itinerary-details">
                     <p><span class="car-icon icon"></span>交通：從名護鳳梨園返回 Vessel Hotel，車程約 <span class="highlight">60-70 分鐘</span>。</p>
                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Nago+Pineapple+Park/Vessel+Hotel+Campana+Okinawa/" target="_blank">[鳳梨園回飯店路線建議]</a></span></p>
@@ -1013,16 +1022,18 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>17:30-19:00：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">焼肉きんぐ 北谷店 (燒肉 King)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>18:00-19:30 (約 1.5 小時)：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">琉球焼肉 Gyu-Samurai (牛侍)</span><span class="highlight alert-text" style="font-size:0.8em; padding: 2px 4px; margin-left: 5px;">強烈建議預約</span></summary>
                 <div class="itinerary-details">
-                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=焼肉きんぐ+北谷店" target="_blank">[燒肉 King 北谷店地圖]</a></span> 地址：沖縄県中頭郡北谷町美浜2-4-5</p>
-                    <p><span class="car-icon icon"></span>交通：離飯店很近，<span class="highlight">步行約 10-15 分鐘</span> 或開車 3 分鐘。</p>
-                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/Yakiniku+King+Chatan/" target="_blank">[飯店至餐廳路線]</a></span> | <a href="https://www.yakiniku-king.jp/" target="_blank" class="info-link icon">[餐廳官網]</a> (可查菜單/分店/預約)</p>
-                    <p><span class="info-icon icon"></span>特色：日本連鎖<span class="highlight">燒肉吃到飽</span>餐廳，CP值高，有不同價位的套餐可選。使用<span class="highlight">平板點餐</span>，通常有多語言介面 (含中文)。提供兒童餐具。</p>
+                    <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=沖縄県国頭郡恩納村名嘉真２２４７−１+琉球焼肉+Gyu-Samurai" target="_blank">[Gyu-Samurai 地圖]</a></span> 地址：沖縄県国頭郡恩納村名嘉真２２４７−１</p>
+                    <p><span class="info-icon icon"></span>Map Code: <span class="highlight">206 387 307*05</span></p>
+                    <p><span class="car-icon icon"></span>交通：從 Vessel Hotel (美國村) 開車前往，車程約 <span class="highlight">30-40 分鐘</span>。</p>
+                    <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Vessel+Hotel+Campana+Okinawa/Wagyu+Yakiniku+Gyu-Samurai+名嘉真店+沖縄県国頭郡恩納村名嘉真２２４７−１/" target="_blank">[飯店至餐廳路線]</a></span> | <a href="https://gyu-samurai.com/" target="_blank" class="info-link icon">[餐廳官網]</a></p>
+                    <p><span class="info-icon icon"></span>特色：品嚐高品質<span class="highlight">和牛燒肉</span>，用餐環境精緻，提供多種套餐與單點選擇。</p>
                     <div class="alert-note alert-icon icon">
                         <strong>**強烈建議預約**</strong><br>
-                        燒肉 King 是<span class="highlight">極受歡迎的排隊名店</span>，尤其是晚餐時段。強烈建議<span class="highlight">務必提前透過官網或其預約系統 (如 EPARK App) 預約訂位</span>，否則現場等候時間可能非常長 (1-2 小時以上)。
+                        此餐廳可能非常熱門，強烈建議<span class="highlight">務必提前透過官網或電話預約訂位</span>，以確保有座位。
                     </div>
+                    <p class="small-note">由於飯店預計17:00抵達，而驅車前往恩納村的餐廳需時，晚餐訂於18:00開始，行程將較為緊湊，請注意掌握出發時間。</p>
                 </div>
             </details>
         </div>
@@ -1042,7 +1053,7 @@
         <h2 id="day4-heading">Day 4: 6月14日（週六）<span class="pin-icon icon"></span>公園放電 → <span class="shop-icon icon"></span>購物 → <span class="car-icon icon"></span>還車 → <span class="train-icon icon"></span>入住那霸</h2>
         <div class="itinerary-item">
              <details>
-                <summary><span class="time-icon icon"></span><strong>07:30-08:30：</strong> <span class="hotel-icon icon"></span>飯店早餐 & 整理行李</summary>
+                <summary><span class="time-icon icon"></span><strong>07:30-08:30 (約 1 小時)：</strong> <span class="hotel-icon icon"></span>飯店早餐 & 整理行李</summary>
                  <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>享用在 Vessel Hotel 的最後一頓早餐，並將所有行李整理好。</p>
                  </div>
@@ -1059,7 +1070,7 @@
         </div>
         <div class="itinerary-item">
             <details open>
-                <summary><span class="time-icon icon"></span><strong>09:30-11:30：</strong> <span class="pin-icon icon"></span><span class="highlight">県営中城公園 (Nakagusuku Park)</span> 大放電</summary>
+                <summary><span class="time-icon icon"></span><strong>09:30-11:30 (約 2 小時)：</strong> <span class="pin-icon icon"></span><span class="highlight">県営中城公園 (Nakagusuku Park)</span> 大放電</summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=中城公園" target="_blank">地址：沖縄県中頭郡中城村登又176</a></span></p>
                     <p><span class="car-icon icon"></span>交通：從 Vessel Hotel 開車前往，車程約 <span class="highlight">30-40 分鐘</span>。</p>
@@ -1067,13 +1078,13 @@
                     <p><span class="info-icon icon"></span>特色：沖繩<span class="highlight">超大型免費</span>的縣立公園，以其<span class="highlight">巨型、多樣化的遊樂設施</span>聞名，包括大型彈跳床 (トランポリン)、各種長短溜滑梯、攀爬網、沙坑等。</p>
                     <p><span class="pin-icon icon"></span>主要遊樂區：<span class="highlight">南區遊具廣場</span> (適合學齡兒童)、<span class="highlight">西區遊具廣場</span> (可能較適合幼兒)。園區內有多個停車場，建議停靠近南區或西區遊具的停車場。</p>
                     <p class="small-note">建議停留時間：約 2 小時。這裡絕對是孩子們消耗精力的好地方！請務必<span class="highlight">注意防曬和補充水分</span>，部分設施在陽光下會很燙。</p>
-                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">098-935-2666</span> 或 Map Code <span class="highlight">33 410 697*17</span>。</p>
+                    <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <a href="tel:+81989352666" class="highlight">098-935-2666</a> 或 Map Code <span class="highlight">33 410 697*17</span>。</p>
                 </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>12:00-13:15：</strong> <span class="food-icon icon"></span>午餐 (AEON Mall Rycom 或附近)</summary>
+                <summary><span class="time-icon icon"></span><strong>12:00-13:15 (約 1小時15分)：</strong> <span class="food-icon icon"></span>午餐 (AEON Mall Rycom 或附近)</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>午餐選擇：</p>
                      <ul>
@@ -1090,20 +1101,20 @@
         </div>
         <div class="itinerary-item">
              <details>
-                <summary><span class="time-icon icon"></span><strong>13:30-15:30：</strong> <span class="shop-icon icon"></span><span class="highlight">イオンモール沖縄ライカム (AEON MALL Okinawa Rycom)</span> 購物時光</summary>
+                <summary><span class="time-icon icon"></span><strong>13:30-15:30 (約 2 小時)：</strong> <span class="shop-icon icon"></span><span class="highlight">イオンモール沖縄ライカム (AEON MALL Okinawa Rycom)</span> 購物時光</summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=イオンモール沖縄ライカム" target="_blank">地址：沖縄県中頭郡北中城村ライカム1番地</a></span></p>
                     <p><a href="https://cht.okinawarycom-aeonmall.com/" target="_blank" class="info-link icon">[購物中心官網/樓層指南]</a></p>
                     <p><span class="info-icon icon"></span>特色：沖繩<span class="highlight">最大型的購物中心</span>，品牌齊全，包含流行服飾、雜貨、大型超市 (AEON Style)、電器 (Bic Camera)、書店、電影院、兒童遊樂區等。</p>
                     <p><span class="shop-icon icon"></span>購物重點：可以在這裡的超市購買零食、飲料；逛逛 Uniqlo, GU, Muji 等日系品牌；尋找兒童用品店 (如 Babies"R"Us)；或單純 window shopping。</p>
                     <p class="small-note">建議停留時間：約 2 小時 (可依購物需求彈性調整)。記得逛逛中庭的<span class="highlight">大型水族箱</span>。</p>
-                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">098-930-0425</span> 或 Map Code <span class="highlight">33 530 406*45</span>。</p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <a href="tel:+81989300425" class="highlight">098-930-0425</a> 或 Map Code <span class="highlight">33 530 406*45</span>。</p>
                 </div>
             </details>
         </div>
          <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>15:45-16:30：</strong> <span class="car-icon icon"></span>開車前往那霸飯店 <span class="hotel-icon icon"></span>Hotel Ocean (先寄放行李)</summary>
+                <summary><span class="time-icon icon"></span><strong>15:45-16:30 (約 45 分鐘)：</strong> <span class="car-icon icon"></span>開車前往那霸飯店 <span class="hotel-icon icon"></span>Hotel Ocean (先寄放行李)</summary>
                  <div class="itinerary-details">
                      <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Ocean+Naha+Kokusai+Dori" target="_blank">地址：沖縄県那覇市安里２丁目４−８</a></span> (靠近牧志站)</p>
                      <p><span class="car-icon icon"></span>交通：從 AEON Mall Rycom 出發，車程約 <span class="highlight">30-50 分鐘</span>。</p>
@@ -1111,13 +1122,13 @@
                      <p class="small-note">進入那霸市區後車流可能較多，尤其接近傍晚時段。建議走高速公路 (沖縄南IC 或 北中城IC → 那覇IC)。</p>
                      <p><span class="hotel-icon icon"></span>抵達飯店後，<span class="highlight">先將行李寄放在櫃檯</span>。告知預計稍晚回來 Check-in。</p>
                      <p><a href="https://www.hotelocean.jp/" target="_blank" class="info-link icon">[飯店官網]</a></p>
-                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <span class="highlight">098-863-2288</span> 或 Map Code <span class="highlight">33 158 413*85</span>。</p>
+                     <p class="info-note"><span class="info-icon icon"></span>導航設定：可輸入電話 <a href="tel:+81988632288" class="highlight">098-863-2288</a> 或 Map Code <span class="highlight">33 158 413*85</span>。</p>
                  </div>
             </details>
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>16:45-17:45：</strong> <span class="car-icon icon"></span><span class="highlight">還車</span> @ OTSレンタカー DFS営業所 + 加油</summary>
+                <summary><span class="time-icon icon"></span><strong>16:45-17:45 (約 1 小時)：</strong> <span class="car-icon icon"></span><span class="highlight">還車</span> @ OTSレンタカー DFS営業所 + 加油</summary>
                 <div class="itinerary-details">
                     <div class="alert-note alert-icon icon">
                         <strong>**還車前務必加滿油！**</strong><br>
@@ -1134,7 +1145,7 @@
         </div>
         <div class="itinerary-item">
             <details open>
-                <summary><span class="time-icon icon"></span><strong>17:45-18:15：</strong> <span class="train-icon icon"></span>/<span class="taxi-icon icon"></span> 從還車點返回 Hotel Ocean & Check-in</summary>
+                <summary><span class="time-icon icon"></span><strong>17:45-18:15 (約 30 分鐘)：</strong> <span class="train-icon icon"></span>/<span class="taxi-icon icon"></span> 從還車點返回 Hotel Ocean & Check-in</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>交通方式選擇：</p>
                     <ul>
@@ -1162,7 +1173,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>18:30-20:00：</strong> <span class="food-icon icon"></span>晚餐 (國際通周邊)</summary>
+                <summary><span class="time-icon icon"></span><strong>18:30-20:00 (約 1.5 小時)：</strong> <span class="food-icon icon"></span>晚餐 (國際通周邊)</summary>
                 <div class="itinerary-details">
                     <p><span class="walk-icon icon"></span>交通：從 Hotel Ocean <span class="highlight">步行</span> 即可抵達國際通主要區域。</p>
                     <p><span class="info-icon icon"></span>晚餐選擇：國際通上餐廳林立。</p>
@@ -1189,7 +1200,7 @@
         <h2 id="day5-heading">Day 5: 6月15日（週日）<span class="walk-icon icon"></span>國際通文化美食探索日 (步行+單軌)</h2>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>08:00-09:00：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
+                <summary><span class="time-icon icon"></span><strong>08:00-09:00 (約 1 小時)：</strong> <span class="hotel-icon icon"></span>飯店早餐</summary>
                 <div class="itinerary-details">
                      <p><span class="info-icon icon"></span>盡情享用 Hotel Ocean 著名的<span class="highlight">親子友善早餐</span>，據說有兒童專屬自助吧、離乳食品等。</p>
                 </div>
@@ -1197,7 +1208,7 @@
         </div>
         <div class="itinerary-item">
             <details open>
-                <summary><span class="time-icon icon"></span><strong>09:30-11:30：</strong> <span class="walk-icon icon"></span>遊覽 <span class="highlight">国際通り (Kokusai Dori)</span> & <span class="highlight">第一牧志公設市場</span></summary>
+                <summary><span class="time-icon icon"></span><strong>09:30-11:30 (約 2 小時)：</strong> <span class="walk-icon icon"></span>遊覽 <span class="highlight">国際通り (Kokusai Dori)</span> & <span class="highlight">第一牧志公設市場</span></summary>
                 <div class="itinerary-details">
                     <p><span class="walk-icon icon"></span>交通：全程<span class="highlight">步行</span>。從 Hotel Ocean 出發，沿國際通往縣廳前方向慢慢逛。</p>
                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hotel+Ocean,+Naha+Kokusai+Dori/Kokusai+Dori+Street,+Naha,+Okinawa,+Japan/" target="_blank">[飯店至國際通步行路線參考]</a></span></p>
@@ -1216,7 +1227,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>11:30-13:00：</strong> <span class="food-icon icon"></span>午餐 (牧志市場 或 國際通周邊)</summary>
+                <summary><span class="time-icon icon"></span><strong>11:30-13:00 (約 1.5 小時)：</strong> <span class="food-icon icon"></span>午餐 (牧志市場 或 國際通周邊)</summary>
                 <div class="itinerary-details">
                      <p><span class="walk-icon icon"></span>午餐選擇：</p>
                     <ul>
@@ -1237,7 +1248,7 @@
         </div>
         <div class="itinerary-item">
              <details>
-                <summary><span class="time-icon icon"></span><strong>13:30-16:30：</strong> <span class="shop-icon icon"></span><span class="walk-icon icon"></span>國際通 & 周邊商店街自由探索 / 購物</summary>
+                <summary><span class="time-icon icon"></span><strong>13:30-16:30 (彈性約 3 小時)：</strong> <span class="shop-icon icon"></span><span class="walk-icon icon"></span>國際通 & 周邊商店街自由探索 / 購物</summary>
                 <div class="itinerary-details">
                      <p><span class="info-icon icon"></span>下午自由活動時間，深入探索國際通及周邊的特色街道和商店。</p>
                      <p>建議區域：</p>
@@ -1258,7 +1269,7 @@
         </div>
          <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>17:00-18:30：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">国際通り屋台村 (Kokusai Dori Food Village)</span></summary>
+                <summary><span class="time-icon icon"></span><strong>17:00-18:30 (約 1.5 小時)：</strong> <span class="food-icon icon"></span>晚餐：<span class="highlight">国際通り屋台村 (Kokusai Dori Food Village)</span></summary>
                 <div class="itinerary-details">
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=国際通り屋台村" target="_blank">地址：沖縄県那覇市牧志3丁目11-17</a></span></p>
                     <p><span class="walk-icon icon"></span>交通：從國際通主要街道步行可達 (靠近 Hotel Ocean / 牧志站一側)。</p>
@@ -1288,7 +1299,7 @@
         <h2 id="day6-heading">Day 6: 6月16日（週一）<span class="food-icon icon"></span>悠閒早午餐 → <span class="train-icon icon"></span>機場 → <span class="flight-icon icon"></span>賦歸</h2>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>08:00-09:00：</strong> <span class="hotel-icon icon"></span>飯店早餐 & 最後整理</summary>
+                <summary><span class="time-icon icon"></span><strong>08:00-09:00 (約 1 小時)：</strong> <span class="hotel-icon icon"></span>飯店早餐 & 最後整理</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>把握最後機會享用 Hotel Ocean 的早餐，並完成所有行李打包。</p>
                 </div>
@@ -1305,7 +1316,7 @@
         </div>
         <div class="itinerary-item">
             <details open>
-                <summary><span class="time-icon icon"></span><strong>10:00-11:30：</strong> <span class="food-icon icon"></span>悠閒早午餐 / 最後巡禮</summary>
+                <summary><span class="time-icon icon"></span><strong>10:00-11:30 (約 1.5 小時)：</strong> <span class="food-icon icon"></span>悠閒早午餐 / 最後巡禮</summary>
                 <div class="itinerary-details">
                      <p><span class="walk-icon icon"></span>地點選擇：</p>
                      <ul>
@@ -1329,7 +1340,7 @@
         </div>
         <div class="itinerary-item">
              <details>
-                <summary><span class="time-icon icon"></span><strong>11:30-12:30：</strong> <span class="shop-icon icon"></span>最後採買 & <span class="hotel-icon icon"></span>領取行李</summary>
+                <summary><span class="time-icon icon"></span><strong>11:30-12:30 (約 1 小時)：</strong> <span class="shop-icon icon"></span>最後採買 & <span class="hotel-icon icon"></span>領取行李</summary>
                 <div class="itinerary-details">
                     <p><span class="shop-icon icon"></span>利用最後一點時間，在國際通補齊沒買到的伴手禮或紀念品。</p>
                     <p><span class="hotel-icon icon"></span>返回 Hotel Ocean <span class="highlight">領取寄放的行李</span>。</p>
@@ -1338,7 +1349,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>12:30-13:00：</strong> <span class="walk-icon icon"></span>步行前往 <span class="train-icon icon"></span>單軌電車「<span class="highlight">牧志駅 (Makishi Station)</span>」</summary>
+                <summary><span class="time-icon icon"></span><strong>12:30-13:00 (約 30 分鐘)：</strong> <span class="walk-icon icon"></span>步行前往 <span class="train-icon icon"></span>單軌電車「<span class="highlight">牧志駅 (Makishi Station)</span>」</summary>
                 <div class="itinerary-details">
                     <p><span class="walk-icon icon"></span>交通：從 Hotel Ocean 拖著行李步行至牧志站，約 <span class="highlight">5-8 分鐘</span>。</p>
                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Hotel+Ocean,+Naha+Kokusai+Dori/Makishi+Station/" target="_blank">[飯店至牧志站步行路線]</a></span></p>
@@ -1348,7 +1359,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>13:00-13:30：</strong> <span class="train-icon icon"></span>搭乘單軌電車前往「<span class="highlight">那覇空港駅 (Naha Airport Station)</span>」</summary>
+                <summary><span class="time-icon icon"></span><strong>13:00-13:30 (約 30 分鐘)：</strong> <span class="train-icon icon"></span>搭乘單軌電車前往「<span class="highlight">那覇空港駅 (Naha Airport Station)</span>」</summary>
                 <div class="itinerary-details">
                     <p><span class="train-icon icon"></span>購票：在牧志站自動售票機購買前往「那覇空港駅」的單程票 (大人 <span class="highlight">¥300</span>，兒童票價依年齡規定)。</p>
                     <p><span class="train-icon icon"></span>搭乘：搭乘往「<span class="highlight">那覇空港</span>」方向的列車 (終點站)。</p>
@@ -1360,7 +1371,7 @@
         </div>
         <div class="itinerary-item">
             <details open>
-                <summary><span class="time-icon icon"></span><strong>13:30-18:00：</strong> <span class="flight-icon icon"></span>那霸機場 (<span title="Naha Airport Code">OKA</span>) 報到 & 自由活動</summary>
+                <summary><span class="time-icon icon"></span><strong>13:30-18:00 (彈性約 4.5 小時)：</strong> <span class="flight-icon icon"></span>那霸機場 (<span title="Naha Airport Code">OKA</span>) 報到 & 自由活動</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>抵達「那覇空港駅」後，跟隨指示前往 <span class="highlight">國際線航廈 (International Terminal)</span>。</p>
                     <p><span class="map-link icon"><a href="https://www.google.com/maps/search/?api=1&query=那覇空港+国際線ターミナル" target="_blank">[那霸機場國際線航廈地圖]</a></span> | <a href="https://www.naha-airport.co.jp/zh-hant/" target="_blank" class="info-link icon">[機場官網]</a></p>
@@ -1387,7 +1398,7 @@
         </div>
          <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>18:00-20:30：</strong> <span class="flight-icon icon"></span>安檢 & 候機</summary>
+                <summary><span class="time-icon icon"></span><strong>18:00-20:30 (約 2.5 小時)：</strong> <span class="flight-icon icon"></span>安檢 & 候機</summary>
                 <div class="itinerary-details">
                     <p><span class="check-icon icon"></span>返回國際線航廈，通過<span class="highlight">安全檢查</span> (液體、尖銳物品等規定請注意)。</p>
                     <p><span class="check-icon icon"></span>通過<span class="highlight">證照查驗</span> (出境審查)。</p>
@@ -1398,7 +1409,7 @@
         </div>
         <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>21:05-21:50 (台灣時間)：</strong> <span class="flight-icon icon"></span>搭乘華航 CI123 返回桃園 T2</summary>
+                <summary><span class="time-icon icon"></span><strong>21:05-21:50 (台灣時間) (飛行約 1小時45分)：</strong> <span class="flight-icon icon"></span>搭乘華航 CI123 返回桃園 T2</summary>
                 <div class="itinerary-details">
                     <p><span class="info-icon icon"></span>飛行時間約 1小時45分鐘。</p>
                     <p class="small-note">好好休息，回味沖繩之旅！</p>
@@ -1407,7 +1418,7 @@
         </div>
         <div class="itinerary-item">
              <details>
-                <summary><span class="time-icon icon"></span><strong>21:50-23:00：</strong> <span class="flight-icon icon"></span>抵達桃機 & 入境</summary>
+                <summary><span class="time-icon icon"></span><strong>21:50-23:00 (約 1小時10分)：</strong> <span class="flight-icon icon"></span>抵達桃機 & 入境</summary>
                 <div class="itinerary-details">
                     <p><span class="check-icon icon"></span>抵達桃園機場第二航廈。</p>
                     <p><span class="check-icon icon"></span>辦理入境手續 (可使用自動通關)。</p>
@@ -1417,7 +1428,7 @@
         </div>
          <div class="itinerary-item">
             <details>
-                <summary><span class="time-icon icon"></span><strong>23:00-00:00：</strong> <span class="car-icon icon"></span>返回竹北</summary>
+                <summary><span class="time-icon icon"></span><strong>23:00-00:00 (約 1 小時)：</strong> <span class="car-icon icon"></span>返回竹北</summary>
                 <div class="itinerary-details">
                     <p><span class="car-icon icon"></span>交通：取車或搭乘預約的機場接送返回竹北。</p>
                     <p><span class="route-link icon"><a href="https://www.google.com/maps/dir/Taoyuan+International+Airport+Terminal+2/Hsinchu+County,+Zhubei+City/" target="_blank">[機場回竹北路線參考]</a></span> (車程約 45-60 分鐘)</p>
@@ -1429,7 +1440,7 @@
 
     <section id="food" aria-labelledby="food-heading">
         <h2 id="food-heading"><span class="food-icon icon"></span>沖繩必吃美食清單</h2>
-         <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;">
+         <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;" class="multi-col-list">
             <li><span class="highlight">沖繩麵 (Okinawa Soba / Soki Soba)</span> - 各家湯頭、麵條、滷肉不同</li>
             <li><span class="highlight">Agu 豬料理</span> - 涮涮鍋 (Shabu Shabu)、薑汁燒肉、炸豬排</li>
             <li>石垣牛 / 沖繩和牛 - 燒肉、牛排、漢堡排</li>
@@ -1450,7 +1461,7 @@
 
     <section id="shopping" aria-labelledby="shopping-heading">
         <h2 id="shopping-heading"><span class="shop-icon icon"></span>沖繩推薦購物清單</h2>
-        <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;">
+        <ul style="padding-left: 20px; columns: 2; gap: 20px; -webkit-columns: 2; -moz-columns: 2;" class="multi-col-list">
             <li><span class="highlight">紅芋 (Beni Imo) 相關點心</span> - 御菓子御殿的紅芋塔最經典</li>
             <li><span class="highlight">金楚糕 (Chinsuko)</span> - 傳統琉球餅乾，有多種口味</li>
             <li>沖繩黑糖 (Kokuto) - 各式黑糖塊、黑糖漿、黑糖花生</li>
@@ -1467,92 +1478,7 @@
         </ul>
     </section>
 
-     <section id="packing" aria-labelledby="packing-heading">
-        <h2 id="packing-heading"><span class="pack-icon icon"></span>打包建議清單</h2>
-        <div class="itinerary-item">
-            <details>
-                <summary><strong>重要文件類</strong></summary>
-                <div class="itinerary-details">
-                    <ul>
-                        <li><span class="check-icon icon"></span>護照 (正本 + 影本/照片備份)</li>
-                        <li><span class="check-icon icon"></span>駕照正本 + 日文譯本 (若有租車)</li>
-                        <li><span class="check-icon icon"></span>機票/電子機票</li>
-                        <li><span class="check-icon icon"></span>住宿/租車/活動預訂確認信 (電子或紙本)</li>
-                        <li><span class="check-icon icon"></span>旅遊保險證明</li>
-                        <li><span class="check-icon icon"></span>信用卡、日幣現金</li>
-                    </ul>
-                </div>
-            </details>
-        </div>
-         <div class="itinerary-item">
-            <details>
-                <summary><strong>衣物鞋襪類</strong></summary>
-                <div class="itinerary-details">
-                    <ul>
-                        <li><span class="check-icon icon"></span>夏季輕便透氣衣物 (T-shirt, 短褲, 洋裝)</li>
-                        <li><span class="check-icon icon"></span>薄外套或罩衫 (防曬/室內冷氣)</li>
-                        <li><span class="check-icon icon"></span><span class="highlight">泳衣、泳褲、泳帽</span> (若要去海灘/泳池)</li>
-                        <li><span class="check-icon icon"></span>內衣褲、襪子</li>
-                        <li><span class="check-icon icon"></span><span class="highlight alert-text">超級舒適好走的鞋子</span> (運動鞋/休閒鞋)</li>
-                        <li><span class="check-icon icon"></span>涼鞋或拖鞋 (海灘/飯店內)</li>
-                        <li><span class="check-icon icon"></span>睡衣</li>
-                    </ul>
-                </div>
-            </details>
-        </div>
-        <div class="itinerary-item">
-            <details>
-                <summary><strong>盥洗與防護用品類</strong></summary>
-                <div class="itinerary-details">
-                    <ul>
-                        <li><span class="check-icon icon"></span>個人盥洗用品 (牙刷/牙膏，部分飯店可能不主動提供)</li>
-                        <li><span class="check-icon icon"></span>保養品、化妝品</li>
-                        <li><span class="check-icon icon"></span><span class="highlight">高係數防曬乳</span> (臉部/身體，建議防水型)</li>
-                        <li><span class="check-icon icon"></span>曬後蘆薈膠/保濕乳液</li>
-                        <li><span class="check-icon icon"></span>帽子、太陽眼鏡</li>
-                        <li><span class="check-icon icon"></span><span class="highlight">雨具</span> (摺疊傘/輕便雨衣)</li>
-                        <li><span class="check-icon icon"></span>防蚊液/止癢藥膏</li>
-                    </ul>
-                </div>
-            </details>
-        </div>
-         <div class="itinerary-item">
-            <details>
-                <summary><strong>兒童專用物品類</strong></summary>
-                <div class="itinerary-details">
-                    <ul>
-                        <li><span class="check-icon icon"></span>足夠的換洗衣物、尿布 (若需要)</li>
-                        <li><span class="check-icon icon"></span>輕便推車 或 揹巾</li>
-                        <li><span class="check-icon icon"></span>兒童餐具、圍兜、水壺</li>
-                        <li><span class="check-icon icon"></span>常備藥品 (退燒、止瀉、過敏、外傷藥膏、OK繃)</li>
-                        <li><span class="check-icon icon"></span>體溫計</li>
-                        <li><span class="check-icon icon"></span>安撫玩具、繪本</li>
-                        <li><span class="check-icon icon"></span>小零食、米餅</li>
-                        <li><span class="check-icon icon"></span>兒童泳具、玩沙工具 (可當地買)</li>
-                    </ul>
-                </div>
-            </details>
-        </div>
-        <div class="itinerary-item">
-            <details>
-                <summary><strong>電子產品與其他</strong></summary>
-                <div class="itinerary-details">
-                    <ul>
-                        <li><span class="check-icon icon"></span>手機、充電器、行動電源 (不可托運)</li>
-                        <li><span class="check-icon icon"></span>相機、記憶卡、充電器</li>
-                        <li><span class="check-icon icon"></span>日本上網工具 (WiFi分享器/SIM卡)</li>
-                        <li><span class="check-icon icon"></span>轉換插頭 (若有需要，但通常台日插座相容)</li>
-                        <li><span class="check-icon icon"></span>購物袋/環保袋</li>
-                        <li><span class="check-icon icon"></span>塑膠袋/夾鏈袋 (裝濕衣物/分裝小物)</li>
-                        <li><span class="check-icon icon"></span>個人藥品</li>
-                         <li><span class="check-icon icon"></span>小毛巾/濕紙巾</li>
-                    </ul>
-                </div>
-            </details>
-        </div>
-    </section>
-
-    <section id="notes" aria-labelledby="notes-heading">
+     <section id="notes" aria-labelledby="notes-heading">
         <h2 id="notes-heading"><span class="note-icon icon"></span>重要注意事項與提醒</h2>
         <div class="itinerary-item">
             <details open>
@@ -1582,6 +1508,7 @@
                     <p><span class="info-icon icon"></span><strong>ETC 卡：</strong> 建議租用 ETC 卡，上下高速公路直接通過 ETC 通道，還車時一併結算費用，非常方便。</p>
                      <p><span class="alert-icon icon"></span><strong>兒童安全座椅：</strong> 日本法規<span class="highlight">強制規定</span> 6 歲以下兒童<span class="highlight">必須</span>使用安全座椅。租車時務必依孩童年齡/體重預約合適的座椅。</p>
                      <p><span class="alert-icon icon"></span><strong>還車加油：</strong> Day 4 還車前<span class="highlight alert-text">必須將油箱加滿</span> ("レギュラー" Regular / Regular Gasoline)。保留收據。請務必預留充足時間 (建議 30 分鐘以上) 尋找加油站並完成加油。</p>
+                    <p><span class='alert-icon icon'></span><strong>取車提醒：</strong>尤其在旅遊旺季或航班抵達尖峰時段，租車公司櫃台和取車點可能人潮較多，建議預留至少1小時的緩衝時間辦理手續和取車。</p>
                     <p><span class="info-icon icon"></span><strong>導航：</strong> 車上通常配有日文/英文導航。善用 <span class="highlight">Map Code</span> 或 <span class="highlight">電話號碼</span> 輸入目的地。也可搭配手機 Google Maps 使用。</p>
                     <p class="small-note">停車：大部分景點、購物中心、飯店都有停車場 (部分可能收費)。市區路邊停車較困難。</p>
                 </div>
@@ -1643,15 +1570,15 @@
             </li>
              <li><span class="phone-icon icon"></span><strong>駐日代表處 (台北駐日經濟文化代表處 那霸分處)：</strong>
                 <br> - 地址：沖縄県那覇市久茂地3-15-9 アルテビル那覇 6樓 <a href="https://www.google.com/maps/search/?api=1&query=台北駐日経済文化代表処那覇分処" target="_blank" class="map-link icon">[地圖]</a>
-                <br> - 電話：(+81) 098-862-7008
-                <br> - <span class="alert-text">急難救助電話 (24小時)：(+81) 090-1942-1107</span> (僅供國人護照遺失、意外事件等急難狀況使用)
+                <br> - 電話：<a href="tel:+81988627008">(+81) 098-862-7008</a>
+                <br> - <span class="alert-text">急難救助電話 (24小時)：<a href="tel:+819019421107">(+81) 090-1942-1107</a></span> (僅供國人護照遺失、意外事件等急難狀況使用)
                 <br> - 網址：<a href="https://www.roc-taiwan.org/jpna/index.html" target="_blank" class="web-icon icon">[那霸分處官網]</a>
             </li>
-            <li><span class="pin-icon icon"></span><strong>遺失信用卡：</strong> 請立即聯繫發卡銀行的海外緊急服務電話辦理掛失。</li>
+            <li><span class="pin-icon icon"></span><strong>遺失信用卡：</strong> 請立即聯絡發卡銀行的海外緊急服務電話辦理掛失。</li>
             <li><span class="pin-icon icon"></span><strong>保險公司聯絡方式：</strong> 將投保的保險公司緊急聯絡電話記錄下來。</li>
              <li><span class="hotel-icon icon"></span><strong>住宿飯店聯絡電話：</strong>
-                 <br> - Vessel Hotel Campana: 098-936-1188
-                 <br> - Hotel Ocean Naha: 098-863-2288
+                 <br> - Vessel Hotel Campana: <a href="tel:+81989361188">098-936-1188</a>
+                 <br> - Hotel Ocean Naha: <a href="tel:+81988632288">098-863-2288</a>
              </li>
         </ul>
     </section>
